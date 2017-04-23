@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AB2EBD542E2B8B20CD0C1B8 /* Pods_RegisterAndChatRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7871FEF567A991EFA538C88 /* Pods_RegisterAndChatRoom.framework */; };
 		3DAE88011EABA7DC003F8DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE88001EABA7DC003F8DF4 /* AppDelegate.swift */; };
 		3DAE88031EABA7DC003F8DF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE88021EABA7DC003F8DF4 /* ViewController.swift */; };
 		3DAE88091EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE88071EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld */; };
 		3DAE880B1EABA7DC003F8DF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DAE880A1EABA7DC003F8DF4 /* Assets.xcassets */; };
 		3DAE880E1EABA7DC003F8DF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DAE880C1EABA7DC003F8DF4 /* LaunchScreen.storyboard */; };
 		3DAE881C1EABAA45003F8DF4 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DAE881B1EABAA45003F8DF4 /* Register.storyboard */; };
+		3DEAB2551EAC5FEB00209233 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DEAB2541EAC5FEB00209233 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,10 @@
 		3DAE880D1EABA7DC003F8DF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DAE880F1EABA7DC003F8DF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DAE881B1EABAA45003F8DF4 /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		3DEAB2541EAC5FEB00209233 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		91F24B4E1107E0370840D30D /* Pods-RegisterAndChatRoom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RegisterAndChatRoom.release.xcconfig"; path = "Pods/Target Support Files/Pods-RegisterAndChatRoom/Pods-RegisterAndChatRoom.release.xcconfig"; sourceTree = "<group>"; };
+		93A364A6D9875E13AEC1E5BE /* Pods-RegisterAndChatRoom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RegisterAndChatRoom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RegisterAndChatRoom/Pods-RegisterAndChatRoom.debug.xcconfig"; sourceTree = "<group>"; };
+		C7871FEF567A991EFA538C88 /* Pods_RegisterAndChatRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RegisterAndChatRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AB2EBD542E2B8B20CD0C1B8 /* Pods_RegisterAndChatRoom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BCA535AD994938E793165FF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93A364A6D9875E13AEC1E5BE /* Pods-RegisterAndChatRoom.debug.xcconfig */,
+				91F24B4E1107E0370840D30D /* Pods-RegisterAndChatRoom.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3DAE87F41EABA7DC003F8DF4 = {
 			isa = PBXGroup;
 			children = (
 				3DAE87FF1EABA7DC003F8DF4 /* RegisterAndChatRoom */,
 				3DAE87FE1EABA7DC003F8DF4 /* Products */,
+				3BCA535AD994938E793165FF /* Pods */,
+				44C4C1F2C4091251F26627BF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,8 +81,17 @@
 				3DAE880C1EABA7DC003F8DF4 /* LaunchScreen.storyboard */,
 				3DAE880F1EABA7DC003F8DF4 /* Info.plist */,
 				3DAE88071EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld */,
+				3DEAB2541EAC5FEB00209233 /* GoogleService-Info.plist */,
 			);
 			path = RegisterAndChatRoom;
+			sourceTree = "<group>";
+		};
+		44C4C1F2C4091251F26627BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7871FEF567A991EFA538C88 /* Pods_RegisterAndChatRoom.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DAE88121EABA7DC003F8DF4 /* Build configuration list for PBXNativeTarget "RegisterAndChatRoom" */;
 			buildPhases = (
+				98A55376594E1350D1E64F1D /* [CP] Check Pods Manifest.lock */,
 				3DAE87F91EABA7DC003F8DF4 /* Sources */,
 				3DAE87FA1EABA7DC003F8DF4 /* Frameworks */,
 				3DAE87FB1EABA7DC003F8DF4 /* Resources */,
+				54F66A1A3744FC05223E0886 /* [CP] Embed Pods Frameworks */,
+				CCBF2CADA8A58A82A74E83C1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,11 +159,60 @@
 			files = (
 				3DAE880E1EABA7DC003F8DF4 /* LaunchScreen.storyboard in Resources */,
 				3DAE880B1EABA7DC003F8DF4 /* Assets.xcassets in Resources */,
+				3DEAB2551EAC5FEB00209233 /* GoogleService-Info.plist in Resources */,
 				3DAE881C1EABAA45003F8DF4 /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		54F66A1A3744FC05223E0886 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RegisterAndChatRoom/Pods-RegisterAndChatRoom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98A55376594E1350D1E64F1D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CCBF2CADA8A58A82A74E83C1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RegisterAndChatRoom/Pods-RegisterAndChatRoom-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3DAE87F91EABA7DC003F8DF4 /* Sources */ = {
@@ -255,6 +334,7 @@
 		};
 		3DAE88131EABA7DC003F8DF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93A364A6D9875E13AEC1E5BE /* Pods-RegisterAndChatRoom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 29Z3P3L58Z;
@@ -268,6 +348,7 @@
 		};
 		3DAE88141EABA7DC003F8DF4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91F24B4E1107E0370840D30D /* Pods-RegisterAndChatRoom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 29Z3P3L58Z;
