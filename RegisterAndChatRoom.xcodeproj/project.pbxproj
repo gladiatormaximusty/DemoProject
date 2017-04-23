@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2AB2EBD542E2B8B20CD0C1B8 /* Pods_RegisterAndChatRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7871FEF567A991EFA538C88 /* Pods_RegisterAndChatRoom.framework */; };
 		3DAE88011EABA7DC003F8DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE88001EABA7DC003F8DF4 /* AppDelegate.swift */; };
-		3DAE88031EABA7DC003F8DF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE88021EABA7DC003F8DF4 /* ViewController.swift */; };
+		3DAE88031EABA7DC003F8DF4 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE88021EABA7DC003F8DF4 /* LoginController.swift */; };
 		3DAE88091EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE88071EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld */; };
 		3DAE880B1EABA7DC003F8DF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DAE880A1EABA7DC003F8DF4 /* Assets.xcassets */; };
 		3DAE880E1EABA7DC003F8DF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DAE880C1EABA7DC003F8DF4 /* LaunchScreen.storyboard */; };
@@ -20,7 +20,7 @@
 /* Begin PBXFileReference section */
 		3DAE87FD1EABA7DC003F8DF4 /* RegisterAndChatRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegisterAndChatRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DAE88001EABA7DC003F8DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3DAE88021EABA7DC003F8DF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3DAE88021EABA7DC003F8DF4 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		3DAE88081EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RegisterAndChatRoom.xcdatamodel; sourceTree = "<group>"; };
 		3DAE880A1EABA7DC003F8DF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DAE880D1EABA7DC003F8DF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				3DAE88001EABA7DC003F8DF4 /* AppDelegate.swift */,
-				3DAE88021EABA7DC003F8DF4 /* ViewController.swift */,
+				3DAE88021EABA7DC003F8DF4 /* LoginController.swift */,
 				3DAE880A1EABA7DC003F8DF4 /* Assets.xcassets */,
 				3DAE881B1EABAA45003F8DF4 /* Register.storyboard */,
 				3DAE880C1EABA7DC003F8DF4 /* LaunchScreen.storyboard */,
@@ -219,7 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DAE88031EABA7DC003F8DF4 /* ViewController.swift in Sources */,
+				3DAE88031EABA7DC003F8DF4 /* LoginController.swift in Sources */,
 				3DAE88011EABA7DC003F8DF4 /* AppDelegate.swift in Sources */,
 				3DAE88091EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld in Sources */,
 			);

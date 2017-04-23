@@ -66,10 +66,10 @@
             </objects>
             <point key="canvasLocation" x="-5752.8000000000002" y="-13463.118440779612"/>
         </scene>
-        <!--View Controller-->
+        <!--Login Controller-->
         <scene sceneID="xwT-BV-V2A">
             <objects>
-                <viewController id="gvt-3Q-3Fa" sceneMemberID="viewController">
+                <viewController id="gvt-3Q-3Fa" customClass="LoginController" customModule="RegisterAndChatRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eOY-BF-Ivp"/>
                         <viewControllerLayoutGuide type="bottom" id="Tuw-rc-c0G"/>
@@ -180,6 +180,9 @@
                                 <state key="normal" title="登入">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="LoginButton:" destination="gvt-3Q-3Fa" eventType="touchUpInside" id="Rsd-03-ZFi"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="還沒註冊成會員？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kr1-wp-Csw">
                                 <rect key="frame" x="66" y="567" width="164" height="24"/>
