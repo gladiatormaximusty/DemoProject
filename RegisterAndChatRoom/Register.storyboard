@@ -246,10 +246,10 @@
             </objects>
             <point key="canvasLocation" x="-5016.8000000000002" y="-13463.118440779612"/>
         </scene>
-        <!--View Controller-->
+        <!--Register Controller-->
         <scene sceneID="oIh-bV-PyC">
             <objects>
-                <viewController id="9AG-U6-HCp" sceneMemberID="viewController">
+                <viewController id="9AG-U6-HCp" customClass="RegisterController" customModule="RegisterAndChatRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P0w-Hj-LNT"/>
                         <viewControllerLayoutGuide type="bottom" id="sy9-4D-wGh"/>
@@ -276,6 +276,9 @@
                                 <state key="normal" title="註冊">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="RegisterButton:" destination="9AG-U6-HCp" eventType="touchUpInside" id="C5j-MK-bD5"/>
+                                </connections>
                             </button>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3i-7w-Mq4">
                                 <rect key="frame" x="16" y="237" width="343" height="194"/>
@@ -394,6 +397,11 @@
                             <constraint firstItem="TT0-zo-TDe" firstAttribute="centerX" secondItem="wxp-qL-bdx" secondAttribute="centerX" id="jdJ-Ko-qQp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="EmailTextField" destination="t2S-b8-X11" id="4Pl-zB-oM4"/>
+                        <outlet property="NameTextField" destination="cXd-Vs-rzL" id="s2f-Fg-vbp"/>
+                        <outlet property="PasswordTextField" destination="aB1-6i-5dh" id="ysW-DX-QKL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpo-f2-Clu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
