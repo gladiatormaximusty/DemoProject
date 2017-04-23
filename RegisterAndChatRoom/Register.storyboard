@@ -241,10 +241,14 @@
                             <constraint firstItem="4b4-uv-SqV" firstAttribute="centerX" secondItem="oPr-Wz-O6n" secondAttribute="centerX" id="sf3-n3-70w"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="426-pV-Eiu" id="MFV-pS-RMQ"/>
+                        <outlet property="passwordTextField" destination="jdc-g7-hJ8" id="XME-op-Ani"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3tf-F7-kUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5016.8000000000002" y="-13463.118440779612"/>
+            <point key="canvasLocation" x="-5050" y="-13463"/>
         </scene>
         <!--Register Controller-->
         <scene sceneID="oIh-bV-PyC">
@@ -405,7 +409,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpo-f2-Clu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4279.1999999999998" y="-13463.118440779612"/>
+            <point key="canvasLocation" x="-4340" y="-13463"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zFJ-PH-sEr">
@@ -423,7 +427,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peM-e7-hwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6692" y="-13463.118440779612"/>
+            <point key="canvasLocation" x="-6462" y="-13463"/>
         </scene>
     </scenes>
     <resources>
