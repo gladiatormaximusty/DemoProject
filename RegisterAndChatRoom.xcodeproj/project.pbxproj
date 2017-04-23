@@ -24,6 +24,7 @@
 		3DEAB2551EAC5FEB00209233 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DEAB2541EAC5FEB00209233 /* GoogleService-Info.plist */; };
 		3DEAB2571EAC677800209233 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEAB2561EAC677800209233 /* RegisterController.swift */; };
 		3DEAB25A1EAC83E800209233 /* AppTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DEAB2591EAC83E800209233 /* AppTableViewController.storyboard */; };
+		3DEAB25C1EACB38F00209233 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEAB25B1EACB38F00209233 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		3DEAB2541EAC5FEB00209233 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3DEAB2561EAC677800209233 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		3DEAB2591EAC83E800209233 /* AppTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppTableViewController.storyboard; sourceTree = "<group>"; };
+		3DEAB25B1EACB38F00209233 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		91F24B4E1107E0370840D30D /* Pods-RegisterAndChatRoom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RegisterAndChatRoom.release.xcconfig"; path = "Pods/Target Support Files/Pods-RegisterAndChatRoom/Pods-RegisterAndChatRoom.release.xcconfig"; sourceTree = "<group>"; };
 		93A364A6D9875E13AEC1E5BE /* Pods-RegisterAndChatRoom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RegisterAndChatRoom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RegisterAndChatRoom/Pods-RegisterAndChatRoom.debug.xcconfig"; sourceTree = "<group>"; };
 		C7871FEF567A991EFA538C88 /* Pods_RegisterAndChatRoom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RegisterAndChatRoom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				3DEAB2591EAC83E800209233 /* AppTableViewController.storyboard */,
+				3DEAB25B1EACB38F00209233 /* MainViewController.swift */,
 			);
 			name = AppTableViewController;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3950382D1EAC7B4D00323EDB /* SearchAnimatedViewController.swift in Sources */,
+				3DEAB25C1EACB38F00209233 /* MainViewController.swift in Sources */,
 				3DEAB2571EAC677800209233 /* RegisterController.swift in Sources */,
 				3950382F1EAC7B4D00323EDB /* TranslatorDetailViewController.swift in Sources */,
 				3950382B1EAC7B4D00323EDB /* model.swift in Sources */,
