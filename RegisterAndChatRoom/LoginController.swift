@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 class LoginController: UIViewController {
+    
+    var messagesController: MessagesController?
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -16,9 +18,6 @@ class LoginController: UIViewController {
         
         handleLogin()
     }
-    
-    
-    
     func handleLogin() {
         guard let email = emailTextField.text, let password = passwordTextField.text else{
             return
@@ -33,25 +32,14 @@ class LoginController: UIViewController {
             self.navigationController?.pushViewController(mainViewController!, animated: true)
             print("login successfully")
         })
-        
-        
-        
     }
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-    
-    
-    
-    
     }
-
-   
 }
 
+extension UIColor{
+    convenience init(r: CGFloat, g: CGFloat, b: CGFloat){
+        self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
+    }
+}
