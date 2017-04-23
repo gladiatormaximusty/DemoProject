@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2AB2EBD542E2B8B20CD0C1B8 /* Pods_RegisterAndChatRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7871FEF567A991EFA538C88 /* Pods_RegisterAndChatRoom.framework */; };
+		3950382A1EAC7B4D00323EDB /* DemandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395038231EAC7B4D00323EDB /* DemandViewController.swift */; };
+		3950382B1EAC7B4D00323EDB /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395038241EAC7B4D00323EDB /* model.swift */; };
+		3950382C1EAC7B4D00323EDB /* requirement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 395038251EAC7B4D00323EDB /* requirement.storyboard */; };
+		3950382D1EAC7B4D00323EDB /* SearchAnimatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395038261EAC7B4D00323EDB /* SearchAnimatedViewController.swift */; };
+		3950382E1EAC7B4D00323EDB /* TranslatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395038271EAC7B4D00323EDB /* TranslatorCollectionViewCell.swift */; };
+		3950382F1EAC7B4D00323EDB /* TranslatorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395038281EAC7B4D00323EDB /* TranslatorDetailViewController.swift */; };
+		395038301EAC7B4D00323EDB /* TranslatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395038291EAC7B4D00323EDB /* TranslatorViewController.swift */; };
 		3DAE88011EABA7DC003F8DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE88001EABA7DC003F8DF4 /* AppDelegate.swift */; };
 		3DAE88031EABA7DC003F8DF4 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE88021EABA7DC003F8DF4 /* LoginController.swift */; };
 		3DAE88091EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE88071EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld */; };
@@ -19,6 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		395038231EAC7B4D00323EDB /* DemandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandViewController.swift; sourceTree = "<group>"; };
+		395038241EAC7B4D00323EDB /* model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
+		395038251EAC7B4D00323EDB /* requirement.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = requirement.storyboard; sourceTree = "<group>"; };
+		395038261EAC7B4D00323EDB /* SearchAnimatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAnimatedViewController.swift; sourceTree = "<group>"; };
+		395038271EAC7B4D00323EDB /* TranslatorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatorCollectionViewCell.swift; sourceTree = "<group>"; };
+		395038281EAC7B4D00323EDB /* TranslatorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatorDetailViewController.swift; sourceTree = "<group>"; };
+		395038291EAC7B4D00323EDB /* TranslatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatorViewController.swift; sourceTree = "<group>"; };
 		3DAE87FD1EABA7DC003F8DF4 /* RegisterAndChatRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegisterAndChatRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DAE88001EABA7DC003F8DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DAE88021EABA7DC003F8DF4 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -46,6 +60,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		395038311EAC7B5C00323EDB /* requirement */ = {
+			isa = PBXGroup;
+			children = (
+				395038251EAC7B4D00323EDB /* requirement.storyboard */,
+				395038241EAC7B4D00323EDB /* model.swift */,
+				395038231EAC7B4D00323EDB /* DemandViewController.swift */,
+				395038291EAC7B4D00323EDB /* TranslatorViewController.swift */,
+				395038271EAC7B4D00323EDB /* TranslatorCollectionViewCell.swift */,
+				395038281EAC7B4D00323EDB /* TranslatorDetailViewController.swift */,
+				395038261EAC7B4D00323EDB /* SearchAnimatedViewController.swift */,
+			);
+			name = requirement;
+			sourceTree = "<group>";
+		};
 		3BCA535AD994938E793165FF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +110,7 @@
 				3DAE880A1EABA7DC003F8DF4 /* Assets.xcassets */,
 				3DAE881B1EABAA45003F8DF4 /* Register.storyboard */,
 				3DAE880C1EABA7DC003F8DF4 /* LaunchScreen.storyboard */,
+				395038311EAC7B5C00323EDB /* requirement */,
 				3DAE880F1EABA7DC003F8DF4 /* Info.plist */,
 				3DAE88071EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld */,
 				3DEAB2541EAC5FEB00209233 /* GoogleService-Info.plist */,
@@ -164,6 +193,7 @@
 				3DAE880B1EABA7DC003F8DF4 /* Assets.xcassets in Resources */,
 				3DEAB2551EAC5FEB00209233 /* GoogleService-Info.plist in Resources */,
 				3DAE881C1EABAA45003F8DF4 /* Register.storyboard in Resources */,
+				3950382C1EAC7B4D00323EDB /* requirement.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,10 +252,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3950382D1EAC7B4D00323EDB /* SearchAnimatedViewController.swift in Sources */,
 				3DEAB2571EAC677800209233 /* RegisterController.swift in Sources */,
+				3950382F1EAC7B4D00323EDB /* TranslatorDetailViewController.swift in Sources */,
+				3950382B1EAC7B4D00323EDB /* model.swift in Sources */,
+				395038301EAC7B4D00323EDB /* TranslatorViewController.swift in Sources */,
 				3DAE88031EABA7DC003F8DF4 /* LoginController.swift in Sources */,
 				3DAE88011EABA7DC003F8DF4 /* AppDelegate.swift in Sources */,
 				3DAE88091EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld in Sources */,
+				3950382E1EAC7B4D00323EDB /* TranslatorCollectionViewCell.swift in Sources */,
+				3950382A1EAC7B4D00323EDB /* DemandViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
