@@ -40,7 +40,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Fake" id="uO9-Fu-ZMe">
                             <connections>
-                                <action selector="Fake:" destination="XiW-V4-tO2" id="bU2-EV-H9I"/>
+                                <action selector="Fake:" destination="XiW-V4-tO2" id="nIo-XM-0NP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

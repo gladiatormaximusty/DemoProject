@@ -1,28 +1,62 @@
 //
-//  MessagesController.swift
-//  RegisterAndChatRoom
+//  ViewController.swift
+//  NewMessenger
 //
-//  Created by Tian Yu on 2017/4/24.
-//  Copyright © 2017年 Edward. All rights reserved.
+//  Created by Farukh IQBAL on 21/02/2017.
+//  Copyright © 2017 Farukh. All rights reserved.
 //
 
 import UIKit
 import Firebase
-class MessagesController: UITableViewController {
-    
-     let cellId = "cellId"
 
+class MessagesController: UITableViewController {
     @IBAction func Fake(_ sender: UIBarButtonItem) {
         handleNewMessage()
     }
-    @IBAction func Logout(_ sender: UIBarButtonItem) {
-        handleLogout()
-    }
+    
+    let cellId = "cellId"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        
+//        let image = UIImage(named: "new_message_icon")
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleNewMessage))
+//        
         checkIfUserIsLoggedIn()
+        
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
+        
+        tableView.allowsMultipleSelectionDuringEditing = true
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+            return
+        }
+        let message = self.messages[indexPath.row]
+        
+        if let chatPartnerId = message.chatPartnerId() {
+           FIRDatabase.database().reference().child("user-messages").child(uid).child(chatPartnerId).removeValue(completionBlock: { (error, ref) in
+            
+            if error != nil {
+                print("Failed to delete message:", error!)
+                return
+            }
+            self.messagesDictionary.removeValue(forKey: chatPartnerId)
+            self.attemptReloadOfTable()
+            
+//            // This is one way of updating the table, but it's actually not that safe...
+//            self.messages.remove(at: indexPath.row)
+//            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+           })
+        }
+        
     }
     
     var messages = [Message]()
@@ -36,32 +70,53 @@ class MessagesController: UITableViewController {
         let ref = FIRDatabase.database().reference().child("user-messages").child(uid)
         ref.observe(.childAdded, with: { (snapshot) in
             
-            let messageId = snapshot.key
-            let messagesReference = FIRDatabase.database().reference().child("Messages").child(messageId)
-            messagesReference.observeSingleEvent(of: .value, with: { (snapshot) in
+            let userId = snapshot.key
+            FIRDatabase.database().reference().child("user-messages").child(uid).child(userId).observe(.childAdded, with: { (snapshot) in
                 
-                if let dictionary = snapshot.value as? [String: Any] {
-                    let message = Message()
-                    message.setValuesForKeys(dictionary)
-                    if let chatPartnerId = message.chatPartnerId() {
-                        self.messagesDictionary[chatPartnerId] = message
-                        self.messages = Array(self.messagesDictionary.values)
-                        self.messages.sort(by: { (message1, message2) -> Bool in
-                            return message1.timestamp!.intValue > message2.timestamp!.intValue
-                        })
-                    }
-                    self.timer?.invalidate()
-                    print("we just canceled our timer")
-                    self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
-                    print("schedule a table reload in 0.1 sec")
-                }
+                let messageId = snapshot.key
+                self.fetchMessageWithMessageId(messageId: messageId)
             }, withCancel: nil)
         }, withCancel: nil)
+        
+        ref.observeSingleEvent(of: .childRemoved, with: { (snapshot) in
+            print(snapshot.key)
+            print(self.messagesDictionary)
+            
+            self.messagesDictionary.removeValue(forKey: snapshot.key)
+            self.attemptReloadOfTable()
+        }, withCancel: nil)
+    }
+    
+    private func fetchMessageWithMessageId(messageId: String) {
+        let messagesReference = FIRDatabase.database().reference().child("Messages").child(messageId)
+        
+        messagesReference.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: Any] {
+                let message = Message(dictionary: dictionary)
+                
+                if let chatPartnerId = message.chatPartnerId() {
+                    self.messagesDictionary[chatPartnerId] = message
+                }
+                
+                self.attemptReloadOfTable()
+            }
+        }, withCancel: nil)
+    }
+    
+    private func attemptReloadOfTable() {
+        self.timer?.invalidate()
+        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
     }
     
     var timer: Timer?
     
     func handleReloadTable() {
+        self.messages = Array(self.messagesDictionary.values)
+        self.messages.sort(by: { (message1, message2) -> Bool in
+            return message1.timestamp!.intValue > message2.timestamp!.intValue
+        })
+        
+        // this will crash because of background thread, so lets call this on dispatch_async main thread
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -84,16 +139,18 @@ class MessagesController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let message = messages[indexPath.row]
+        
         guard let chatPartnerId = message.chatPartnerId() else {
             return
         }
+        
         let ref = FIRDatabase.database().reference().child("users").child(chatPartnerId)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else {
                 return
             }
             let user = User()
-            user.Id = chatPartnerId
+            user.id = chatPartnerId
             user.setValuesForKeys(dictionary)
             self.showChatControllerForUser(user: user)
         }, withCancel: nil)
@@ -151,7 +208,7 @@ class MessagesController: UITableViewController {
         profileImageView.layer.cornerRadius = 20
         profileImageView.clipsToBounds = true
         if let profileImageUrl = user.profileImageUrl {
-            profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
+           profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
         }
         
         containerView.addSubview(profileImageView)
@@ -193,11 +250,10 @@ class MessagesController: UITableViewController {
             print(logoutError)
         }
         
-//        let loginController = LoginController()
-//            loginController.messagesController = self
-//        present(loginController, animated: true, completion: nil)
-//      dismiss(animated: true, completion: nil)
+        let loginController = LoginController()
+        loginController.messagesController = self
+        present(loginController, animated: true, completion: nil)
     }
-
-
 }
+
+

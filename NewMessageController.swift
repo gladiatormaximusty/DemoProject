@@ -1,23 +1,25 @@
 //
 //  NewMessageController.swift
-//  RegisterAndChatRoom
+//  NewMessenger
 //
-//  Created by Tian Yu on 2017/4/24.
-//  Copyright © 2017年 Edward. All rights reserved.
+//  Created by Farukh IQBAL on 23/02/2017.
+//  Copyright © 2017 Farukh. All rights reserved.
 //
 
 import UIKit
 import Firebase
+
 class NewMessageController: UITableViewController {
-
-
+    
     let cellId = "cellId"
     
     var users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
         
         fetchUser()
@@ -28,12 +30,14 @@ class NewMessageController: UITableViewController {
             
             if let dictionary = snapshot.value as? [String: Any] {
                 let user = User()
-                user.Id = snapshot.key
+                user.id = snapshot.key
                 
+                // If you use this setter, your app will crash if your class properties don't exactly match up with the firebase dictionary keys
                 user.setValuesForKeys(dictionary)
                 
                 self.users.append(user)
                 
+                // This will crash because of background thread, so let's use dispatch_async to fix
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
                 })
@@ -45,8 +49,7 @@ class NewMessageController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
     
@@ -57,8 +60,9 @@ class NewMessageController: UITableViewController {
         let user = users[indexPath.row]
         cell.textLabel?.text = user.name
         cell.detailTextLabel?.text = user.email
-    
+        
         if let profileimageUrl = user.profileImageUrl {
+            
             cell.profileImageView.loadImageUsingCacheWithUrlString(urlString: profileimageUrl)
         }
         return cell
