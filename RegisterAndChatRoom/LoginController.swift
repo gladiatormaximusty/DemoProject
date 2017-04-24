@@ -30,6 +30,7 @@ class LoginController: UIViewController {
                 print("跳出警告控制器提醒使用者ex:帳號密碼不符！！請重新輸入！！")
                 return
             }
+            self.messagesController?.fetchUserAndSetupNavBarTitle()
             let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
             let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
             self.present(mainViewController!, animated: true, completion: nil)

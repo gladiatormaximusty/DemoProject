@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class RegisterController: UIViewController {
-
+    var messagesController: MessagesController?
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -50,10 +50,7 @@ class RegisterController: UIViewController {
                     print(metadata)
                 })
             }
-            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
-            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
-            self.present(mainViewController!, animated: true, completion: nil)
-        })
+                    })
     }
     private func registerUserIntoDatabaseWithUID(uid:String, values:[String:Any]){
         let ref = FIRDatabase.database().reference()
@@ -67,6 +64,12 @@ class RegisterController: UIViewController {
             }
             let user = User()
             user.setValuesForKeys(values)
+            self.messagesController?.setupNavBarWithUser(user: user)
+            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
+            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
+            self.present(mainViewController!, animated: true, completion: nil)
+
+
         })
         
     }

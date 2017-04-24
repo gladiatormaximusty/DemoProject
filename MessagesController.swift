@@ -38,15 +38,13 @@ class MessagesController: UITableViewController {
             
             let messageId = snapshot.key
             let messagesReference = FIRDatabase.database().reference().child("Messages").child(messageId)
-            
             messagesReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                
                 if let dictionary = snapshot.value as? [String: Any] {
                     let message = Message()
                     message.setValuesForKeys(dictionary)
-                    
                     if let chatPartnerId = message.chatPartnerId() {
                         self.messagesDictionary[chatPartnerId] = message
-                        
                         self.messages = Array(self.messagesDictionary.values)
                         self.messages.sort(by: { (message1, message2) -> Bool in
                             return message1.timestamp!.intValue > message2.timestamp!.intValue
@@ -54,12 +52,10 @@ class MessagesController: UITableViewController {
                     }
                     self.timer?.invalidate()
                     print("we just canceled our timer")
-                    
                     self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
                     print("schedule a table reload in 0.1 sec")
                 }
             }, withCancel: nil)
-            
         }, withCancel: nil)
     }
     
@@ -88,11 +84,9 @@ class MessagesController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let message = messages[indexPath.row]
-        
         guard let chatPartnerId = message.chatPartnerId() else {
             return
         }
-        
         let ref = FIRDatabase.database().reference().child("users").child(chatPartnerId)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else {
@@ -202,7 +196,7 @@ class MessagesController: UITableViewController {
 //        let loginController = LoginController()
 //            loginController.messagesController = self
 //        present(loginController, animated: true, completion: nil)
-        dismiss(animated: true, completion: nil)
+//      dismiss(animated: true, completion: nil)
     }
 
 

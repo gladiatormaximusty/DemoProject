@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--Messages Controller-->
         <scene sceneID="Jue-dW-0Dq">
             <objects>
                 <tableViewController id="XiW-V4-tO2" customClass="MessagesController" customModule="RegisterAndChatRoom" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9B5-rQ-ZU2" id="YzH-5c-cQY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -32,7 +32,7 @@
                             <outlet property="delegate" destination="XiW-V4-tO2" id="3TR-RP-FuS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="ayR-dE-e3L">
+                    <navigationItem key="navigationItem" id="ayR-dE-e3L">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="dCd-7e-oin">
                             <connections>
                                 <action selector="Logout:" destination="XiW-V4-tO2" id="KNU-zn-6Lp"/>
@@ -53,7 +53,7 @@
         <scene sceneID="f9X-aA-vMF">
             <objects>
                 <collectionViewController storyboardIdentifier="ChatLogController" id="gAN-gj-Odb" customClass="ChatLogController" customModule="RegisterAndChatRoom" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="cag-rs-E6g">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="cag-rs-E6g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,7 +84,7 @@
             </objects>
             <point key="canvasLocation" x="95.200000000000003" y="1859.8200899550227"/>
         </scene>
-        <!--Title-->
+        <!--New Message Controller-->
         <scene sceneID="jr4-ce-GdB">
             <objects>
                 <tableViewController storyboardIdentifier="NewMessageController" id="Lzm-H3-nHU" customClass="NewMessageController" customModule="RegisterAndChatRoom" customModuleProvider="target" sceneMemberID="viewController">
@@ -107,7 +107,7 @@
                             <outlet property="delegate" destination="Lzm-H3-nHU" id="WtZ-uL-WI4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="bDy-in-foj">
+                    <navigationItem key="navigationItem" id="bDy-in-foj">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="ZCp-PR-MLd">
                             <connections>
                                 <action selector="Cancel:" destination="Lzm-H3-nHU" id="xK5-Et-raw"/>

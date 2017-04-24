@@ -95,7 +95,7 @@
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRb-Ku-Rx3">
                                 <rect key="frame" x="16" y="291" width="343" height="128"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1234@gmail.com" borderStyle="roundedRect" placeholder="輸入信箱帳號" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="426-pV-Eiu">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Donna@gmail.com" borderStyle="roundedRect" placeholder="輸入信箱帳號" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="426-pV-Eiu">
                                         <rect key="frame" x="92" y="25" width="243" height="30"/>
                                         <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
