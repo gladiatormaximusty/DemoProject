@@ -14,6 +14,9 @@ class LoginController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBAction func RegisterButton(_ sender: UIButton) {
+        switchToHandleRegister()
+    }
     @IBAction func LoginButton(_ sender: UIButton) {
         
         handleLogin()
@@ -29,10 +32,19 @@ class LoginController: UIViewController {
             }
             let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
             let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
-            self.navigationController?.pushViewController(mainViewController!, animated: true)
+            self.present(mainViewController!, animated: true, completion: nil)
             print("login successfully")
         })
     }
+    
+    func switchToHandleRegister(){
+        let signupViewControllerObj = self.storyboard?.instantiateViewController(withIdentifier: "RegisterController") as? RegisterController
+        self.navigationController?.pushViewController(signupViewControllerObj!, animated: true)
+        
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

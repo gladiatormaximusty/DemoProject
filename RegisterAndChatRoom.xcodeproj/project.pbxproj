@@ -18,6 +18,7 @@
 		3D75B1EB1EAD1F8B0058BE40 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75B1EA1EAD1F8B0058BE40 /* NewMessageController.swift */; };
 		3D75B1ED1EAD22750058BE40 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75B1EC1EAD22750058BE40 /* ChatLogController.swift */; };
 		3D75B1EF1EAD22E70058BE40 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75B1EE1EAD22E70058BE40 /* ChatMessageCell.swift */; };
+		3D75B2671EAE27310058BE40 /* RegisterController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75B2661EAE27310058BE40 /* RegisterController+handlers.swift */; };
 		3DAE88011EABA7DC003F8DF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE88001EABA7DC003F8DF4 /* AppDelegate.swift */; };
 		3DAE88031EABA7DC003F8DF4 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE88021EABA7DC003F8DF4 /* LoginController.swift */; };
 		3DAE88091EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE88071EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld */; };
@@ -45,6 +46,7 @@
 		3D75B1EA1EAD1F8B0058BE40 /* NewMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		3D75B1EC1EAD22750058BE40 /* ChatLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 		3D75B1EE1EAD22E70058BE40 /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		3D75B2661EAE27310058BE40 /* RegisterController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RegisterController+handlers.swift"; sourceTree = "<group>"; };
 		3DAE87FD1EABA7DC003F8DF4 /* RegisterAndChatRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegisterAndChatRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DAE88001EABA7DC003F8DF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DAE88021EABA7DC003F8DF4 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				3DAE88001EABA7DC003F8DF4 /* AppDelegate.swift */,
 				3DAE88021EABA7DC003F8DF4 /* LoginController.swift */,
 				3DEAB2561EAC677800209233 /* RegisterController.swift */,
+				3D75B2661EAE27310058BE40 /* RegisterController+handlers.swift */,
 				3DAE880A1EABA7DC003F8DF4 /* Assets.xcassets */,
 				3DAE881B1EABAA45003F8DF4 /* Register.storyboard */,
 				3DAE880C1EABA7DC003F8DF4 /* LaunchScreen.storyboard */,
@@ -313,6 +316,7 @@
 				395038301EAC7B4D00323EDB /* TranslatorViewController.swift in Sources */,
 				3DAE88031EABA7DC003F8DF4 /* LoginController.swift in Sources */,
 				3D75B1EB1EAD1F8B0058BE40 /* NewMessageController.swift in Sources */,
+				3D75B2671EAE27310058BE40 /* RegisterController+handlers.swift in Sources */,
 				3DEAB2661EAD1A5900209233 /* UserCell.swift in Sources */,
 				3D75B1ED1EAD22750058BE40 /* ChatLogController.swift in Sources */,
 				3DAE88011EABA7DC003F8DF4 /* AppDelegate.swift in Sources */,

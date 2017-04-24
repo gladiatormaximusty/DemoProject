@@ -95,7 +95,7 @@
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRb-Ku-Rx3">
                                 <rect key="frame" x="16" y="291" width="343" height="128"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入信箱帳號" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="426-pV-Eiu">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1234@gmail.com" borderStyle="roundedRect" placeholder="輸入信箱帳號" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="426-pV-Eiu">
                                         <rect key="frame" x="92" y="25" width="243" height="30"/>
                                         <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -106,7 +106,7 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="輸入6位密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdc-g7-hJ8">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="000000" borderStyle="roundedRect" placeholder="輸入6位密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdc-g7-hJ8">
                                         <rect key="frame" x="92" y="73" width="243" height="30"/>
                                         <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -205,7 +205,7 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="9AG-U6-HCp" kind="show" id="G44-ao-ac1"/>
+                                    <action selector="RegisterButton:" destination="gvt-3Q-3Fa" eventType="touchUpInside" id="lwN-ru-SQ6"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oy-in-rFX">
@@ -253,7 +253,7 @@
         <!--Register Controller-->
         <scene sceneID="oIh-bV-PyC">
             <objects>
-                <viewController id="9AG-U6-HCp" customClass="RegisterController" customModule="RegisterAndChatRoom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterController" id="9AG-U6-HCp" customClass="RegisterController" customModule="RegisterAndChatRoom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P0w-Hj-LNT"/>
                         <viewControllerLayoutGuide type="bottom" id="sy9-4D-wGh"/>
@@ -376,16 +376,6 @@
                                     <constraint firstAttribute="height" constant="131" id="etU-c5-gXN"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Z3-5b-C0n">
-                                <rect key="frame" x="159" y="105" width="56" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Ifp-Gw-Zrq"/>
-                                    <constraint firstAttribute="width" constant="56" id="Ml6-zU-8F6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.52156862745098043" green="0.34509803921568627" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -396,8 +386,6 @@
                             <constraint firstItem="KQl-4K-J6u" firstAttribute="centerX" secondItem="wxp-qL-bdx" secondAttribute="centerX" id="S7m-0w-unk"/>
                             <constraint firstItem="p40-9W-lGN" firstAttribute="trailing" secondItem="wxp-qL-bdx" secondAttribute="trailingMargin" id="VLK-Cq-B00"/>
                             <constraint firstItem="p40-9W-lGN" firstAttribute="top" secondItem="x3i-7w-Mq4" secondAttribute="bottom" constant="70" id="aHp-Hn-gY8"/>
-                            <constraint firstItem="6Z3-5b-C0n" firstAttribute="top" secondItem="P0w-Hj-LNT" secondAttribute="bottom" constant="85" id="bm2-ZX-Bd7"/>
-                            <constraint firstItem="6Z3-5b-C0n" firstAttribute="leading" secondItem="wxp-qL-bdx" secondAttribute="leadingMargin" constant="143" id="cY4-Ga-ntF"/>
                             <constraint firstItem="TT0-zo-TDe" firstAttribute="centerX" secondItem="wxp-qL-bdx" secondAttribute="centerX" id="jdJ-Ko-qQp"/>
                         </constraints>
                     </view>
@@ -405,6 +393,7 @@
                         <outlet property="EmailTextField" destination="t2S-b8-X11" id="4Pl-zB-oM4"/>
                         <outlet property="NameTextField" destination="cXd-Vs-rzL" id="s2f-Fg-vbp"/>
                         <outlet property="PasswordTextField" destination="aB1-6i-5dh" id="ysW-DX-QKL"/>
+                        <outlet property="profileImageView" destination="TT0-zo-TDe" id="P2J-11-fTo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpo-f2-Clu" userLabel="First Responder" sceneMemberID="firstResponder"/>

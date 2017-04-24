@@ -15,9 +15,9 @@ class MessagesController: UITableViewController {
     @IBAction func Fake(_ sender: UIBarButtonItem) {
         handleNewMessage()
     }
-//    @IBAction func Logout(_ sender: UIBarButtonItem) {
-//        handleLogout()
-//    }
+    @IBAction func Logout(_ sender: UIBarButtonItem) {
+        handleLogout()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -102,7 +102,7 @@ class MessagesController: UITableViewController {
             let user = User()
             user.Id = chatPartnerId
             user.setValuesForKeys(dictionary)
-           // self.showChatControllerForUser(user: user)
+            self.showChatControllerForUser(user: user)
         }, withCancel: nil)
     }
     
@@ -200,9 +200,10 @@ class MessagesController: UITableViewController {
             print(logoutError)
         }
         
-        let loginController = LoginController()
-            loginController.messagesController = self
-        present(loginController, animated: true, completion: nil)
+//        let loginController = LoginController()
+//            loginController.messagesController = self
+//        present(loginController, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
 
