@@ -66,7 +66,6 @@ class MessagesController: UITableViewController {
     var timer: Timer?
     
     func handleReloadTable() {
-        // this will crash because of background thread, so lets call this on dispatch_async main thread
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -157,9 +156,9 @@ class MessagesController: UITableViewController {
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.layer.cornerRadius = 20
         profileImageView.clipsToBounds = true
-//        if let profileImageUrl = user.profileImageUrl {
-//            profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
-//        }
+        if let profileImageUrl = user.profileImageUrl {
+            profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
+        }
         
         containerView.addSubview(profileImageView)
         

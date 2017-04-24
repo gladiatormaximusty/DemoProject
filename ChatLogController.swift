@@ -18,9 +18,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             observeMessages()
         }
     }
-    
     var messages = [Message]()
-    
     func observeMessages() {
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             return
@@ -159,9 +157,9 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     }
     
     private func setupCell(cell: ChatMessageCell, message: Message) {
-//        if let profileImageUrl = self.user?.profileImageUrl {
-//            cell.profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
-//        }
+        if let profileImageUrl = self.user?.profileImageUrl {
+            cell.profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
+        }
         
         if message.fromId == FIRAuth.auth()?.currentUser?.uid {
             // Outgoing blue

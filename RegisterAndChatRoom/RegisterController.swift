@@ -65,13 +65,8 @@ class RegisterController: UIViewController {
                 print(err)
                 return
             }
-            //第二個畫面回到第一個畫面，用dismiss
-            //self.dismiss(animated: true, completion: nil)
-           // print("Saved user successfully into Firebase database")
             let user = User()
             user.setValuesForKeys(values)
-           // self.messagesController?.setupNavBarWithUser(user: user)
-            //self.dismiss(animated: true, completion: nil)
         })
         
     }
