@@ -15,6 +15,7 @@
 		3950382E1EAC7B4D00323EDB /* TranslatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395038271EAC7B4D00323EDB /* TranslatorCollectionViewCell.swift */; };
 		3950382F1EAC7B4D00323EDB /* TranslatorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395038281EAC7B4D00323EDB /* TranslatorDetailViewController.swift */; };
 		395038301EAC7B4D00323EDB /* TranslatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395038291EAC7B4D00323EDB /* TranslatorViewController.swift */; };
+		3996024A1EB1E796004E6003 /* TaiwanActivityMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 399602491EB1E796004E6003 /* TaiwanActivityMap.storyboard */; };
 		3D75B1EF1EAD22E70058BE40 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75B1EE1EAD22E70058BE40 /* ChatMessageCell.swift */; };
 		3D75B2671EAE27310058BE40 /* RegisterController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75B2661EAE27310058BE40 /* RegisterController+handlers.swift */; };
 		3D75B26A1EAE2BD00058BE40 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75B2691EAE2BD00058BE40 /* Extensions.swift */; };
@@ -45,6 +46,7 @@
 		395038271EAC7B4D00323EDB /* TranslatorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatorCollectionViewCell.swift; sourceTree = "<group>"; };
 		395038281EAC7B4D00323EDB /* TranslatorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatorDetailViewController.swift; sourceTree = "<group>"; };
 		395038291EAC7B4D00323EDB /* TranslatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatorViewController.swift; sourceTree = "<group>"; };
+		399602491EB1E796004E6003 /* TaiwanActivityMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TaiwanActivityMap.storyboard; sourceTree = "<group>"; };
 		3D75B1EE1EAD22E70058BE40 /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		3D75B2661EAE27310058BE40 /* RegisterController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RegisterController+handlers.swift"; sourceTree = "<group>"; };
 		3D75B2691EAE2BD00058BE40 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 			name = requirement;
 			sourceTree = "<group>";
 		};
+		399602481EB1E56A004E6003 /* TaiwanActivityMap */ = {
+			isa = PBXGroup;
+			children = (
+				399602491EB1E796004E6003 /* TaiwanActivityMap.storyboard */,
+			);
+			name = TaiwanActivityMap;
+			sourceTree = "<group>";
+		};
 		3BCA535AD994938E793165FF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +158,7 @@
 				3DAE881B1EABAA45003F8DF4 /* Register.storyboard */,
 				3DAE880C1EABA7DC003F8DF4 /* LaunchScreen.storyboard */,
 				395038311EAC7B5C00323EDB /* requirement */,
+				399602481EB1E56A004E6003 /* TaiwanActivityMap */,
 				3DAE880F1EABA7DC003F8DF4 /* Info.plist */,
 				3DAE88071EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld */,
 				3DEAB2541EAC5FEB00209233 /* GoogleService-Info.plist */,
@@ -229,7 +240,7 @@
 				TargetAttributes = {
 					3DAE87FC1EABA7DC003F8DF4 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 29Z3P3L58Z;
+						DevelopmentTeam = WCFPRNZ278;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -263,6 +274,7 @@
 				3DEAB2551EAC5FEB00209233 /* GoogleService-Info.plist in Resources */,
 				3DAE881C1EABAA45003F8DF4 /* Register.storyboard in Resources */,
 				3950382C1EAC7B4D00323EDB /* requirement.storyboard in Resources */,
+				3996024A1EB1E796004E6003 /* TaiwanActivityMap.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +469,7 @@
 			baseConfigurationReference = 93A364A6D9875E13AEC1E5BE /* Pods-RegisterAndChatRoom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 29Z3P3L58Z;
+				DEVELOPMENT_TEAM = WCFPRNZ278;
 				INFOPLIST_FILE = RegisterAndChatRoom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Edward.RegisterAndChatRoom;
@@ -471,7 +483,7 @@
 			baseConfigurationReference = 91F24B4E1107E0370840D30D /* Pods-RegisterAndChatRoom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 29Z3P3L58Z;
+				DEVELOPMENT_TEAM = WCFPRNZ278;
 				INFOPLIST_FILE = RegisterAndChatRoom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Edward.RegisterAndChatRoom;
