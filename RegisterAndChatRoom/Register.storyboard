@@ -376,6 +376,14 @@
                                     <constraint firstAttribute="height" constant="131" id="etU-c5-gXN"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBL-IQ-heL">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="gvt-3Q-3Fa" kind="show" id="83q-yj-7Gg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -425,4 +433,7 @@
         <image name="Rectangle" width="17" height="17"/>
         <image name="background" width="414" height="735"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="83q-yj-7Gg"/>
+    </inferredMetricsTieBreakers>
 </document>
