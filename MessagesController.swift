@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class MessagesController: UITableViewController {
+class MessagesController: UITableViewController{
     @IBAction func Fake(_ sender: UIBarButtonItem) {
         handleNewMessage()
     }
@@ -243,16 +243,22 @@ class MessagesController: UITableViewController {
     }
     
     func handleLogout() {
-        
         do {
             try FIRAuth.auth()?.signOut()
         } catch let logoutError {
             print(logoutError)
         }
+        let storyboard = UIStoryboard(name: "Register", bundle: nil)
+        let mainViewController = storyboard.instantiateViewController(withIdentifier: "LoginController") as? LoginController
+        let navController = UINavigationController(rootViewController: mainViewController!)
+        navController.setNavigationBarHidden(true, animated: false)
         
-        let loginController = LoginController()
-        loginController.messagesController = self
-        present(loginController, animated: true, completion: nil)
+//        self.present(navController, animated: true) { 
+//            navController.setNavigationBarHidden(true, animated: false)
+//        }
+        
+        present(navController, animated: true, completion: nil)
+        
     }
 }
 

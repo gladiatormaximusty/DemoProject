@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class LoginController: UIViewController {
+class LoginController: UIViewController, UITextFieldDelegate {
     
     var messagesController: MessagesController?
 
@@ -38,6 +38,21 @@ class LoginController: UIViewController {
         })
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    
+        self.emailTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+        return true
+        
+    }
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.emailTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+        
+    }
+    
     func switchToHandleRegister(){
         let signupViewControllerObj = self.storyboard?.instantiateViewController(withIdentifier: "RegisterController") as? RegisterController
         self.navigationController?.pushViewController(signupViewControllerObj!, animated: true)
@@ -45,6 +60,8 @@ class LoginController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
 }
 extension UIColor{
