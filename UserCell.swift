@@ -45,7 +45,9 @@ class UserCell: UITableViewCell {
         super.layoutSubviews()
         
         textLabel?.frame = CGRect(x: 64, y: textLabel!.frame.origin.y - 2, width: textLabel!.frame.width, height: textLabel!.frame.height)
+        textLabel?.textColor = UIColor.white
         detailTextLabel?.frame = CGRect(x: 64, y: detailTextLabel!.frame.origin.y + 2, width: detailTextLabel!.frame.width, height: detailTextLabel!.frame.height)
+        detailTextLabel?.textColor = UIColor(r: 173, g: 174, b: 188)
     }
     
     let profileImageView: UIImageView = {
@@ -60,7 +62,7 @@ class UserCell: UITableViewCell {
     let timeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13)
-        label.textColor = .darkGray
+        label.textColor = UIColor(r: 128, g: 127, b: 150)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

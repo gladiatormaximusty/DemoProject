@@ -27,7 +27,9 @@ class LoginController: UIViewController, UITextFieldDelegate {
         }
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             if error != nil {
-                print("跳出警告控制器提醒使用者ex:帳號密碼不符！！請重新輸入！！")
+                let alert = UIAlertController(title: "", message: "信箱密碼輸入不正確", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 return
             }
             self.messagesController?.fetchUserAndSetupNavBarTitle()
@@ -62,7 +64,16 @@ class LoginController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
+        //外加的，但沒效用！！！
+          self.setNeedsStatusBarAppearanceUpdate()
     }
+    //外加的，但沒效用！！
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
+
 }
 extension UIColor{
     convenience init(r: CGFloat, g: CGFloat, b: CGFloat){

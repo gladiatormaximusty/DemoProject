@@ -12,14 +12,14 @@ import MobileCoreServices
 import AVFoundation
 
 class ChatLogController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
     var user: User? {
         didSet {
             navigationItem.title = user?.name
-            
-            observeMessages()
+             observeMessages()
         }
     }
+    
+
     
     var messages = [Message]()
     
@@ -56,14 +56,17 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         collectionView?.alwaysBounceVertical = true
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = UIColor(r: 241, g: 241, b: 241)
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.keyboardDismissMode = .interactive
-        
         setupKeyboardObservers()
+        
+        let textAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+               
     }
     
     lazy var inputContainerView: ChatInputContainerView = {
@@ -78,9 +81,32 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         imagePickerController.allowsEditing = true
         imagePickerController.delegate = self
         imagePickerController.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+//        //加上新的camera!!!
+//        imagePickerController.sourceType = UIImagePickerControllerSourceType.camera;
         
         present(imagePickerController, animated: true, completion: nil)
     }
+    
+    func handleCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            var imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+
+    }
+    
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        //imagePicked.image = image
+        picker.dismiss(animated: true, completion: nil);
+    }
+
+    
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -259,7 +285,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         
         if message.fromId == FIRAuth.auth()?.currentUser?.uid {
             // Outgoing blue
-            cell.bubbleView.backgroundColor = ChatMessageCell.blueColor
+            cell.bubbleView.backgroundColor = UIColor(r: 45, g:43, b:82)
             cell.textView.textColor = .white
             cell.profileImageView.isHidden = true
             
@@ -267,7 +293,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             cell.bubbleViewLeftAnchor?.isActive = false
         } else {
             // Incoming gray
-            cell.bubbleView.backgroundColor = UIColor(r: 240, g: 240, b: 240)
+            cell.bubbleView.backgroundColor = UIColor(r: 255, g: 255, b: 255)
             cell.textView.textColor = .black
             cell.profileImageView.isHidden = false
             
@@ -283,7 +309,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             cell.messageImageView.isHidden = true
         }
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView?.collectionViewLayout.invalidateLayout()
     }

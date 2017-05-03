@@ -10,16 +10,26 @@ import UIKit
 import Firebase
 
 class MessagesController: UITableViewController{
+    
+
+    
     @IBAction func Fake(_ sender: UIBarButtonItem) {
         handleNewMessage()
     }
     
+    @IBAction func Lougout(_ sender: UIBarButtonItem) {
+        handleLogout()
+    }
     let cellId = "cellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.barTintColor = UIColor(r: 50, g: 45, b: 84)
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        //the next coding is talking about how to change the navigation Bar button item
+        self.navigationController?.navigationBar.tintColor = UIColor.blue
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
 //        let image = UIImage(named: "new_message_icon")
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleNewMessage))
@@ -29,7 +39,15 @@ class MessagesController: UITableViewController{
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
         
         tableView.allowsMultipleSelectionDuringEditing = true
+        
+        
+      
     }
+    
+   
+    
+
+    
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -130,6 +148,7 @@ class MessagesController: UITableViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! UserCell
         let message = messages[indexPath.row]
         cell.message = message
+        cell.backgroundColor = UIColor.clear
         return cell
     }
     
@@ -195,46 +214,53 @@ class MessagesController: UITableViewController{
         observeUserMessages()
         
         let titleView = UIView()
-        titleView.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        titleView.frame = CGRect(x: 0, y: 0, width: 240, height: 40)
         titleView.backgroundColor = .clear
-        
-        let containerView = UIView()
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        titleView.addSubview(containerView)
-        
-        let profileImageView = UIImageView()
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.contentMode = .scaleAspectFill
-        profileImageView.layer.cornerRadius = 20
-        profileImageView.clipsToBounds = true
-        if let profileImageUrl = user.profileImageUrl {
-           profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
-        }
-        
-        containerView.addSubview(profileImageView)
-        
-        // Constraint anchors
-        profileImageView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-        profileImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//        
+//        let containerView = UIView()
+//        containerView.translatesAutoresizingMaskIntoConstraints = false
+//        titleView.addSubview(containerView)
+//        
+//        let profileImageView = UIImageView()
+//        profileImageView.translatesAutoresizingMaskIntoConstraints = false
+//        profileImageView.contentMode = .scaleAspectFill
+//        profileImageView.layer.cornerRadius = 20
+//        profileImageView.clipsToBounds = true
+//        if let profileImageUrl = user.profileImageUrl {
+//           profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
+//        }
+//        
+//        containerView.addSubview(profileImageView)
+//        
+//        // Constraint anchors
+//        profileImageView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+//        profileImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+//        profileImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+//        profileImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         let nameLabel = UILabel()
-        containerView.addSubview(nameLabel)
-        nameLabel.text = user.name
+        titleView.addSubview(nameLabel)
+        //這裡改過！！
+        nameLabel.text = "聊天室"
+        nameLabel.textColor = UIColor.white
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        // Constraint anchors
-        nameLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 8).isActive = true
-        nameLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
-        nameLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        nameLabel.heightAnchor.constraint(equalTo: profileImageView.heightAnchor).isActive = true
         
-        containerView.centerXAnchor.constraint(equalTo: titleView.centerXAnchor).isActive = true
-        containerView.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
+        // Constraint anchors
+        nameLabel.centerXAnchor.constraint(equalTo: titleView.centerXAnchor, constant: 95).isActive = true
+        nameLabel.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
+        nameLabel.widthAnchor.constraint(equalToConstant: 240).isActive = true
+        nameLabel.heightAnchor.constraint(equalToConstant: 23).isActive = true
+        
+//        containerView.centerXAnchor.constraint(equalTo: titleView.centerXAnchor).isActive = true
+//        containerView.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
+//        containerView.widthAnchor.constraint(equalToConstant: 240).isActive = true
+//        containerView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         self.navigationItem.titleView = titleView
     }
+    
+  
     
     func showChatControllerForUser(user: User) {
         let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())

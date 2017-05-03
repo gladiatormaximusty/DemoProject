@@ -26,7 +26,9 @@ class RegisterController: UIViewController {
         }
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
             if error != nil {
-                print("提示警告輸入筐提醒使用者輸入正確")
+                let alert = UIAlertController(title: "登入失敗", message: "信箱密碼輸入不正確", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 return
             }
             guard let uid = user?.uid else{
