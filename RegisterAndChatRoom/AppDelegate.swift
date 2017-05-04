@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import Firebase
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FIRApp.configure()
+        GMSServices.provideAPIKey("AIzaSyCLF9gY7813Hc6WhTdIkV4ompugpSLT1ZM")
+        GMSPlacesClient.provideAPIKey("AIzaSyCLF9gY7813Hc6WhTdIkV4ompugpSLT1ZM")
+        UINavigationBar.appearance().barTintColor = UIColor(red: 19/255.0, green: 23/255.0, blue: 53/255.0, alpha: 1.0)
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
+        
+
         return true
     }
 

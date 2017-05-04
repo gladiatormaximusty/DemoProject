@@ -9,5 +9,8 @@ target 'RegisterAndChatRoom' do
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
+pod 'SVProgressHUD'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
 
 end
