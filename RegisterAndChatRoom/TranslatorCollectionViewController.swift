@@ -74,6 +74,7 @@ class TranslatorCollectionViewController: UICollectionViewController, UICollecti
         TranslatorDetailViewController.arrayNumber = indexPath.row
         TranslatorDetailViewController.name = wizard[indexPath.row].name
         TranslatorDetailViewController.image = wizard[indexPath.row].photo
+        
         navigationController?.pushViewController(TranslatorDetailViewController, animated: true)
     }
     

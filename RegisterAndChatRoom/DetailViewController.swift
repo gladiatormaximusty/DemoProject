@@ -83,6 +83,8 @@ class DetailViewController: UIViewController {
         let image = UIImage(named: (DetailContentNumber?.image)!)
         showImage.image = image
         
+//        navigationController?.hidesBarsWhenVerticallyCompact = false
+        
     }
     
     

@@ -50,9 +50,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
            inputLocationMarker(coordinate: exhibition[i].coordinate, changeColor: exhibition[i].select)
         }
         
+        
     }
-
     
+       
     func inputLocationMarker(coordinate: CLLocationCoordinate2D, changeColor:Bool) {
         
         switch changeColor {

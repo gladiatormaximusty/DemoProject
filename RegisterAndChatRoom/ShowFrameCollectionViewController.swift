@@ -97,9 +97,13 @@ class ShowFrameCollectionViewController: UICollectionViewController, UICollectio
 //    }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let DetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         DetailViewController.DetailContentNumber = selectIndex[indexPath.row]
+//        let viewController = self.parent as! MapViewController
+//        viewController.navigationController?.pushViewController(DetailViewController, animated: true)
         navigationController?.pushViewController(DetailViewController, animated: true)
+//        navigationController?.hidesBarsWhenVerticallyCompact = false
     }
    
 }
