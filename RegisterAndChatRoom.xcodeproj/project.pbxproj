@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2AB2EBD542E2B8B20CD0C1B8 /* Pods_RegisterAndChatRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7871FEF567A991EFA538C88 /* Pods_RegisterAndChatRoom.framework */; };
+		393EA00D1EBC13B20079C53D /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 393EA00C1EBC13B20079C53D /* Record.storyboard */; };
+		393EA0111EBC24350079C53D /* RecordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393EA0101EBC24350079C53D /* RecordTableViewController.swift */; };
+		393EA0131EBC244C0079C53D /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393EA0121EBC244C0079C53D /* RecordTableViewCell.swift */; };
+		393EA0151EBC247B0079C53D /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393EA0141EBC247B0079C53D /* ShowDetailViewController.swift */; };
+		393EA0171EBC262F0079C53D /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393EA0161EBC262F0079C53D /* RecordModel.swift */; };
 		39D3D3511EB9D75600827CFB /* DemandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3D3491EB9D75600827CFB /* DemandViewController.swift */; };
 		39D3D3521EB9D75600827CFB /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3D34A1EB9D75600827CFB /* model.swift */; };
 		39D3D3531EB9D75600827CFB /* requirement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39D3D34B1EB9D75600827CFB /* requirement.storyboard */; };
@@ -44,6 +49,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		393EA00A1EBB6E960079C53D /* testPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = testPlayground.playground; sourceTree = "<group>"; };
+		393EA00C1EBC13B20079C53D /* Record.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Record.storyboard; sourceTree = "<group>"; };
+		393EA0101EBC24350079C53D /* RecordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewController.swift; sourceTree = "<group>"; };
+		393EA0121EBC244C0079C53D /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
+		393EA0141EBC247B0079C53D /* ShowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
+		393EA0161EBC262F0079C53D /* RecordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
 		39D3D3491EB9D75600827CFB /* DemandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandViewController.swift; sourceTree = "<group>"; };
 		39D3D34A1EB9D75600827CFB /* model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		39D3D34B1EB9D75600827CFB /* requirement.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = requirement.storyboard; sourceTree = "<group>"; };
@@ -96,6 +107,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		393EA00B1EBC13720079C53D /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				393EA00C1EBC13B20079C53D /* Record.storyboard */,
+				393EA0161EBC262F0079C53D /* RecordModel.swift */,
+				393EA0101EBC24350079C53D /* RecordTableViewController.swift */,
+				393EA0121EBC244C0079C53D /* RecordTableViewCell.swift */,
+				393EA0141EBC247B0079C53D /* ShowDetailViewController.swift */,
+			);
+			name = Record;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		39D3D3481EB9D6A300827CFB /* requirement */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +167,7 @@
 		3DAE87F41EABA7DC003F8DF4 = {
 			isa = PBXGroup;
 			children = (
+				393EA00A1EBB6E960079C53D /* testPlayground.playground */,
 				3D75B2681EAE2B8D0058BE40 /* Helper */,
 				3DEAB2641EAD1A3300209233 /* View */,
 				3DEAB25D1EAD16C400209233 /* Model */,
@@ -174,8 +199,9 @@
 				3DAE880C1EABA7DC003F8DF4 /* LaunchScreen.storyboard */,
 				39D3D3591EB9D8B800827CFB /* TaiwanExhibition */,
 				39D3D3481EB9D6A300827CFB /* requirement */,
-				3DAE880F1EABA7DC003F8DF4 /* Info.plist */,
+				393EA00B1EBC13720079C53D /* Record */,
 				3DAE88071EABA7DC003F8DF4 /* RegisterAndChatRoom.xcdatamodeld */,
+				3DAE880F1EABA7DC003F8DF4 /* Info.plist */,
 				3DEAB2541EAC5FEB00209233 /* GoogleService-Info.plist */,
 			);
 			path = RegisterAndChatRoom;
@@ -290,6 +316,7 @@
 				3DEAB2551EAC5FEB00209233 /* GoogleService-Info.plist in Resources */,
 				3DAE881C1EABAA45003F8DF4 /* Register.storyboard in Resources */,
 				39D3D3681EB9D94400827CFB /* TaiwanActivityMap.storyboard in Resources */,
+				393EA00D1EBC13B20079C53D /* Record.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,11 +377,15 @@
 			files = (
 				39D3D3521EB9D75600827CFB /* model.swift in Sources */,
 				39D3D3641EB9D94400827CFB /* MapModel.swift in Sources */,
+				393EA0131EBC244C0079C53D /* RecordTableViewCell.swift in Sources */,
 				3DEAB25C1EACB38F00209233 /* MainViewController.swift in Sources */,
 				3DEAB2571EAC677800209233 /* RegisterController.swift in Sources */,
 				3D75B27A1EAE82540058BE40 /* ChatLogController.swift in Sources */,
 				39D3D3671EB9D94400827CFB /* ShowFrameCollectionViewController.swift in Sources */,
 				3DAE88031EABA7DC003F8DF4 /* LoginController.swift in Sources */,
+				393EA0171EBC262F0079C53D /* RecordModel.swift in Sources */,
+				393EA0151EBC247B0079C53D /* ShowDetailViewController.swift in Sources */,
+				393EA0111EBC24350079C53D /* RecordTableViewController.swift in Sources */,
 				3D75B2671EAE27310058BE40 /* RegisterController+handlers.swift in Sources */,
 				39D3D3661EB9D94400827CFB /* ShowFrameCollectionViewCell.swift in Sources */,
 				3DEAB2661EAD1A5900209233 /* UserCell.swift in Sources */,
@@ -491,7 +522,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = RegisterAndChatRoom/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Edward.RegisterAndChatRoom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -506,7 +537,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = RegisterAndChatRoom/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Edward.RegisterAndChatRoom;
 				PRODUCT_NAME = "$(TARGET_NAME)";

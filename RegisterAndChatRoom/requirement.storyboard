@@ -624,6 +624,7 @@
                         <outlet property="imageBackgroungView" destination="jkO-no-Psl" id="2OO-Qx-kEF"/>
                         <outlet property="nameLabel" destination="dwC-3Q-qw4" id="VU7-aw-UNv"/>
                         <outlet property="nextView" destination="6qd-2Q-Ncw" id="9OZ-7C-g18"/>
+                        <outlet property="reservationTime" destination="e5Y-V7-mxv" id="gjP-ls-KNq"/>
                         <outlet property="selectTimeTextField" destination="e5Y-V7-mxv" id="YbV-PA-S5P"/>
                         <outlet property="timeButtonChangeImage" destination="Cqt-ff-uts" id="d5U-81-dGV"/>
                         <outlet property="translatorImage" destination="iId-Yk-CyX" id="bdx-FD-5ld"/>

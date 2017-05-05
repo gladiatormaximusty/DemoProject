@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 class TranslatorDetailViewController: UIViewController {
 
@@ -17,6 +18,7 @@ class TranslatorDetailViewController: UIViewController {
     @IBOutlet weak var nextView: UIView!
     @IBOutlet weak var selectTimeTextField: UITextField!
     
+    @IBOutlet weak var reservationTime: UITextField!
     @IBAction func selectTimeAction(_ sender: UITextField) {
         datePickerView(sender: sender)
     }
@@ -36,13 +38,58 @@ class TranslatorDetailViewController: UIViewController {
     }
 
     @IBAction func checkButton(_ sender: UIButton) {
-//        let alert = UIAlertController(title: "預約成功", message: "是否切換至", preferredStyle: <#T##UIAlertControllerStyle#>)
-        
-         navigationController?.popViewController(animated: true)
-        tabBarController?.selectedIndex = 2
+        let alert = UIAlertController(title: "預約成功", message: "是否要將此行程加進行事曆", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { _ in
+            
+            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
+            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+            self.navigationController?.pushViewController(mainViewController, animated: true)
+            
+            UserDefaults.standard.set(true, forKey: "openFirstController")
+
+            
+        }))
+        alert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { _ in
+            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
+            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+            self.navigationController?.pushViewController(mainViewController, animated: true)
+            
+            UserDefaults.standard.set(true, forKey: "openFirstController")
+
+        }))
+       present(alert, animated: true, completion: nil)
+      
     }
     
     func setToEvent() {
+        let dateForMatter = DateFormatter()
+        let startTime = dateForMatter.date(from: selectTimeTextField.text!)
+        let endTime = Calendar.current.date(byAdding: .init(minute: 30), to: startTime!)
+        
+        
+        let eventStory = EKEventStore()
+        eventStory.requestAccess(to: .event) { (granted, error) in
+            if error != nil {
+                return
+            } else if granted == true && error == nil {
+                let event = EKEvent(eventStore: eventStory)
+                event.title = "與\(self.nameLabel.text)會談"
+                event.startDate = startTime!
+                event.endDate = endTime!
+                let alarm = EKAlarm(absoluteDate: startTime!)
+                event.addAlarm(alarm)
+                
+                event.calendar = eventStory.defaultCalendarForNewEvents
+                do {
+                    try eventStory.save(event, span: .thisEvent)
+                } catch {
+                    
+                }
+                
+            }
+        }
+        
+        
         
     }
    
@@ -111,7 +158,7 @@ class TranslatorDetailViewController: UIViewController {
     func checkButtonItem() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
         selectTimeTextField.text = dateFormatter.string(from: datePicker.date)
         selectTimeTextField.resignFirstResponder()
         

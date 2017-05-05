@@ -184,6 +184,16 @@
             </objects>
             <point key="canvasLocation" x="-844" y="460"/>
         </scene>
+        <!--Record-->
+        <scene sceneID="VtJ-Qe-Q7n">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Record" referencedIdentifier="Record" id="pBe-NE-RlW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="require_btn" id="FWf-24-DeH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cpb-Ph-3fE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-39" y="351"/>
+        </scene>
         <!--requirement-->
         <scene sceneID="h7H-DM-arG">
             <objects>
@@ -222,9 +232,9 @@
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
-                        <segue destination="zZO-dR-MkZ" kind="relationship" relationship="viewControllers" id="9BA-Gq-udI"/>
                         <segue destination="Z0z-d0-4ln" kind="relationship" relationship="viewControllers" id="iVt-2c-kbK"/>
                         <segue destination="OOa-1g-tVf" kind="relationship" relationship="viewControllers" id="iyA-42-bTh"/>
+                        <segue destination="pBe-NE-RlW" kind="relationship" relationship="viewControllers" id="NWP-Ys-c9G"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7N-XC-d3p" userLabel="First Responder" sceneMemberID="firstResponder"/>

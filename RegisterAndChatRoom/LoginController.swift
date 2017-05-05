@@ -33,9 +33,20 @@ class LoginController: UIViewController, UITextFieldDelegate {
                 return
             }
             self.messagesController?.fetchUserAndSetupNavBarTitle()
-            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
-            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
-            self.present(mainViewController!, animated: true, completion: nil)
+//            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
+//            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
+//            self.present(mainViewController!, animated: true, completion: nil)
+            if UserDefaults.standard.bool(forKey: "openFirstController") != true {
+                let storyboard = UIStoryboard(name: "requirement", bundle: nil)
+                let requirement = storyboard.instantiateViewController(withIdentifier: "requirement")
+                self.present(requirement, animated: true, completion: nil)
+            } else {
+                let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
+                let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
+                self.present(mainViewController!, animated: true, completion: nil)
+
+            }
+            
             print("login successfully")
         })
     }

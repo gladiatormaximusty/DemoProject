@@ -37,7 +37,7 @@ class DemandViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
     }
     
-    let location = ["泰國", "馬來西亞"]
+    let location = ["泰國", "馬來西亞", "印尼"]
     let datePicker = UIDatePicker()
     let locationPicker = UIPickerView()
     
