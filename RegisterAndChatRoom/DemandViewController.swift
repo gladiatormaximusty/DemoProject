@@ -13,6 +13,8 @@ class DemandViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     
+    @IBOutlet weak var industryTextField: UITextField!
+    
     @IBAction func dateAction(_ sender: UITextField) {
         datePickerView(sender: sender)
     }
@@ -20,6 +22,11 @@ class DemandViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func locationAction(_ sender: UITextField) {
         setToolBar(sender: sender)
     }
+    
+    @IBAction func industryAction(_ sender: UITextField) {
+        setToolBar(sender: sender)
+    }
+    
     
     
     
@@ -38,8 +45,10 @@ class DemandViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     let location = ["泰國", "馬來西亞", "印尼"]
+    let industry = ["鋼鐵製造業", "紡織業", "化學材料製造業", "製茶業", "營建工程業"]
     let datePicker = UIDatePicker()
     let locationPicker = UIPickerView()
+    let industryPicker = UIPickerView()
     
     
     override func viewDidLoad() {
@@ -48,17 +57,23 @@ class DemandViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         locationPicker.delegate = self
         locationPicker.dataSource = self
         
+        industryPicker.delegate = self
+        industryPicker.dataSource = self
         
-        let datePlacegolder = NSAttributedString(string: "請選擇出發日期", attributes: [NSForegroundColorAttributeName : UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5)])
+        
+        let datePlacegolder = NSAttributedString(string: "請選擇您想預約的時間", attributes: [NSForegroundColorAttributeName : UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5)])
         
         dateTextField.attributedPlaceholder = datePlacegolder
         
-        let locationPlacegolder = NSAttributedString(string: "請選擇國家", attributes: [NSForegroundColorAttributeName : UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5)])
+        let locationPlacegolder = NSAttributedString(string: "請選擇想詢問的國家", attributes: [NSForegroundColorAttributeName : UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5)])
         
         locationTextField.attributedPlaceholder = locationPlacegolder
         
+        let industryPlacegolder = NSAttributedString(string: "請選擇產業別", attributes: [NSForegroundColorAttributeName : UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5)])
         
+        industryTextField.attributedPlaceholder = industryPlacegolder
         
+
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         
@@ -71,9 +86,10 @@ class DemandViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func datePickerView(sender: UITextField) {
-        datePicker.datePickerMode = .date
+        datePicker.datePickerMode = .dateAndTime
         datePicker.locale = NSLocale(localeIdentifier: "Chinese") as Locale
-        let formatter = DateFormatter()
+        //        設定時間間距
+        datePicker.minuteInterval = 10
         let date = Date()
         datePicker.minimumDate = date
         
@@ -111,6 +127,16 @@ class DemandViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             locationTextField.inputView = locationPicker
             locationTextField.inputAccessoryView = toolBar
             locationTextField.inputView?.backgroundColor = UIColor(red: 177.0/255, green: 177.0/255, blue: 189.0/255.0, alpha: 1)
+        case 3:
+            let checkButton = UIBarButtonItem(title: "check", style: .plain, target: self, action: #selector(industryCheckItem))
+            let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+            let cancelButton = UIBarButtonItem(title: "cancel", style: .plain, target: self, action: #selector(industryCancelItem))
+            toolBar.setItems([cancelButton, spaceButton, checkButton], animated: true)
+            
+            
+            industryTextField.inputView = industryPicker
+            industryTextField.inputAccessoryView = toolBar
+            industryTextField.inputView?.backgroundColor = UIColor(red: 177.0/255, green: 177.0/255, blue: 189.0/255.0, alpha: 1)
         default:
             break
         }
@@ -121,11 +147,22 @@ class DemandViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return location.count
+        
+        if pickerView == locationPicker {
+            return location.count
+        } else {
+             return industry.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return location[row]
+        
+        if pickerView == locationPicker {
+            return location[row]
+        } else {
+            return industry[row]
+        }
+        
     }
 
 }

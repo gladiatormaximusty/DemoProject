@@ -26,7 +26,7 @@ extension DemandViewController {
     func dateCheckItem() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         dateTextField.text = dateFormatter.string(from: datePicker.date)
         locationTextField.becomeFirstResponder()
     }
@@ -37,11 +37,20 @@ extension DemandViewController {
     
     func locationCheckItem() {
         locationTextField.text = location[locationPicker.selectedRow(inComponent: 0)]
-        locationTextField.resignFirstResponder()
+        industryTextField.becomeFirstResponder()
     }
     
     func locationCancelItem() {
         locationTextField.resignFirstResponder()
+    }
+    
+    func industryCheckItem() {
+        industryTextField.text = industry[industryPicker.selectedRow(inComponent: 0)]
+        industryTextField.resignFirstResponder()
+    }
+    
+    func industryCancelItem() {
+        industryTextField.resignFirstResponder()
     }
 }
 

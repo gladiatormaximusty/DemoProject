@@ -29,15 +29,6 @@ class TranslatorDetailViewController: UIViewController {
     
     
     @IBAction func reservationButton(_ sender: UIButton) {
-        UIView.animate(withDuration: 1.0) {
-            self.nextView.isHidden = false
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
-                self.selectTimeTextField.becomeFirstResponder()
-            })
-        }
-    }
-
-    @IBAction func checkButton(_ sender: UIButton) {
         let alert = UIAlertController(title: "預約成功", message: "是否要將此行程加進行事曆", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { _ in
             
@@ -46,7 +37,6 @@ class TranslatorDetailViewController: UIViewController {
             self.navigationController?.pushViewController(mainViewController, animated: true)
             
             UserDefaults.standard.set(true, forKey: "openFirstController")
-
             
         }))
         alert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { _ in
@@ -55,44 +45,36 @@ class TranslatorDetailViewController: UIViewController {
             self.navigationController?.pushViewController(mainViewController, animated: true)
             
             UserDefaults.standard.set(true, forKey: "openFirstController")
-
+            
         }))
-       present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
+        
+    }
+
+    @IBAction func checkButton(_ sender: UIButton) {
+//        let alert = UIAlertController(title: "預約成功", message: "是否要將此行程加進行事曆", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { _ in
+//            
+//            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
+//            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+//            self.navigationController?.pushViewController(mainViewController, animated: true)
+//            
+//            UserDefaults.standard.set(true, forKey: "openFirstController")
+//
+//        }))
+//        alert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { _ in
+//            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
+//            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+//            self.navigationController?.pushViewController(mainViewController, animated: true)
+//            
+//            UserDefaults.standard.set(true, forKey: "openFirstController")
+//
+//        }))
+//       present(alert, animated: true, completion: nil)
       
     }
     
-    func setToEvent() {
-        let dateForMatter = DateFormatter()
-        let startTime = dateForMatter.date(from: selectTimeTextField.text!)
-        let endTime = Calendar.current.date(byAdding: .init(minute: 30), to: startTime!)
-        
-        
-        let eventStory = EKEventStore()
-        eventStory.requestAccess(to: .event) { (granted, error) in
-            if error != nil {
-                return
-            } else if granted == true && error == nil {
-                let event = EKEvent(eventStore: eventStory)
-                event.title = "與\(self.nameLabel.text)會談"
-                event.startDate = startTime!
-                event.endDate = endTime!
-                let alarm = EKAlarm(absoluteDate: startTime!)
-                event.addAlarm(alarm)
-                
-                event.calendar = eventStory.defaultCalendarForNewEvents
-                do {
-                    try eventStory.save(event, span: .thisEvent)
-                } catch {
-                    
-                }
-                
-            }
-        }
-        
-        
-        
-    }
-   
+    
     var arrayNumber:Int?
     var name:String?
     var image:String?
@@ -122,7 +104,7 @@ class TranslatorDetailViewController: UIViewController {
         datePicker.datePickerMode = .dateAndTime
         datePicker.locale = NSLocale(localeIdentifier: "Chinese") as Locale
 //        設定時間間距
-        datePicker.minuteInterval = 30
+        datePicker.minuteInterval = 10
         let date = Date()
         datePicker.minimumDate = date
 
