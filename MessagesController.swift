@@ -158,7 +158,7 @@ class MessagesController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let message = messages[indexPath.row]
-        
+        print(message.chatPartnerId())
         guard let chatPartnerId = message.chatPartnerId() else {
             return
         }
@@ -241,7 +241,7 @@ class MessagesController: UITableViewController{
         let nameLabel = UILabel()
         titleView.addSubview(nameLabel)
         //這裡改過！！
-        nameLabel.text = "聊天室"
+        nameLabel.text = "聊天"
         nameLabel.textColor = UIColor.white
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         

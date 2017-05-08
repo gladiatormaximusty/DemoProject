@@ -19,3 +19,23 @@ class RecordMoedel {
         self.pdfName = pdfName
     }
 }
+
+class PartnersModel {
+    var name:String?
+    var detail:String?
+    var phone:String?
+    var email:String?
+    var url:String?
+    var logoImage:String?
+    
+    init(name:String, detail:String, phone:String, email:String, url:String, logoImage:String
+        ) {
+        self.name = name
+        self.detail = detail
+        self.phone = phone
+        self.email = email
+        self.url = url
+        self.logoImage = logoImage
+    }
+    
+}

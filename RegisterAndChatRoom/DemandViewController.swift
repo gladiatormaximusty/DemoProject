@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class DemandViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -31,9 +33,12 @@ class DemandViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     
     @IBAction func enterIndexButton(_ sender: UIButton) {
-        if dateTextField.text != nil || locationTextField.text != nil {
+        if dateTextField.text != "" && locationTextField.text != "" && industryTextField.text != "" {
             let storyboard = UIStoryboard(name: "requirement", bundle: nil)
-            let translatorCollectionViewController = storyboard.instantiateViewController(withIdentifier: "TranslatorCollectionViewController")
+            let translatorCollectionViewController = storyboard.instantiateViewController(withIdentifier: "TranslatorCollectionViewController") as! TranslatorCollectionViewController
+            
+            translatorCollectionViewController.didSelectDate = dateTextField.text
+            
             navigationController?.pushViewController(translatorCollectionViewController, animated: true)
             
         } else {

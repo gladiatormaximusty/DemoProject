@@ -7,7 +7,10 @@
 //
 
 import UIKit
-import EventKit
+import FirebaseDatabase
+import Firebase
+import FirebaseAuth
+
 
 class TranslatorDetailViewController: UIViewController {
 
@@ -29,15 +32,20 @@ class TranslatorDetailViewController: UIViewController {
     
     
     @IBAction func reservationButton(_ sender: UIButton) {
-        let alert = UIAlertController(title: "預約成功", message: "是否要將此行程加進行事曆", preferredStyle: .alert)
+        let alert = UIAlertController(title: "是否要將此行程加進行事曆", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { _ in
             
-            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
-            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
-            self.navigationController?.pushViewController(mainViewController, animated: true)
             
-            UserDefaults.standard.set(true, forKey: "openFirstController")
-            
+                let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
+                let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+                self.navigationController?.pushViewController(mainViewController, animated: true)
+                
+                UserDefaults.standard.set(true, forKey: "openFirstController")
+                
+            let properties: [String: Any] = ["text": "系統通知：您與\((self.name)!)的預約以完成。諮詢時間為\((self.theSelectorTime)!)"]
+                self.sendMessageWithProperties(properties: properties)
+        
+
         }))
         alert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { _ in
             let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
@@ -45,6 +53,9 @@ class TranslatorDetailViewController: UIViewController {
             self.navigationController?.pushViewController(mainViewController, animated: true)
             
             UserDefaults.standard.set(true, forKey: "openFirstController")
+            
+            let properties: [String: Any] = ["text": "系統通知：您與\((self.name)!)的預約以完成。諮詢時間為\((self.theSelectorTime)!)"]
+            self.sendMessageWithProperties(properties: properties)
             
         }))
         present(alert, animated: true, completion: nil)
@@ -74,7 +85,36 @@ class TranslatorDetailViewController: UIViewController {
       
     }
     
+    func sendMessageWithProperties(properties: [String: Any]) {
+        let ref = FIRDatabase.database().reference().child("Messages")
+        let childRef = ref.childByAutoId()
+        let toId = "kpZ2AxnddKYRfogzg8rKngv15Fi2"
+        let fromId = "3saSLTVY23Wq1aPjqZhKUm7zf573"
+        let timestamp = NSNumber(value: Int(Date().timeIntervalSince1970))
+        var values: [String: Any] = ["toId": toId as Any, "fromId": fromId as Any, "timestamp": timestamp]
+        
+        // key $0, value $1
+        properties.forEach({values[$0] = $1})
+        
+        childRef.updateChildValues(values) { (error, ref) in
+            if error != nil {
+                print(error!)
+                return
+            }
+            
+            
+            let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId).child(toId)
+            
+            let messageId = childRef.key
+            userMessagesRef.updateChildValues([messageId: 1])
+            
+            let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId).child(fromId)
+            recipientUserMessagesRef.updateChildValues([messageId: 1])
+        }
+    }
+
     
+    var theSelectorTime:String?
     var arrayNumber:Int?
     var name:String?
     var image:String?

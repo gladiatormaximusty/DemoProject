@@ -12,6 +12,7 @@ class showDetailViewController: UIViewController {
 
     @IBOutlet weak var showDetail: UITextView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class TranslatorCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    var didSelectDate:String?
     var hidden = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,8 @@ class TranslatorCollectionViewController: UICollectionViewController, UICollecti
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "requirement", bundle: nil)
         let TranslatorDetailViewController = storyboard.instantiateViewController(withIdentifier: "TranslatorDetailViewController") as! TranslatorDetailViewController
+        
+        TranslatorDetailViewController.theSelectorTime = didSelectDate!
         
         TranslatorDetailViewController.arrayNumber = indexPath.row
         TranslatorDetailViewController.name = wizard[indexPath.row].name
