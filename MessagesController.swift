@@ -24,7 +24,7 @@ class MessagesController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.barTintColor = UIColor(r: 50, g: 45, b: 84)
+//        self.tabBarController?.tabBar.barTintColor = UIColor(r: 50, g: 45, b: 84)
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         //the next coding is talking about how to change the navigation Bar button item
         self.navigationController?.navigationBar.tintColor = UIColor.blue

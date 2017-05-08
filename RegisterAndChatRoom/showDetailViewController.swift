@@ -17,6 +17,7 @@ class showDetailViewController: UIViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(arrayNumber(Not:)), name: Notification.Name("getNumber"), object: nil)
+        self.showDetail.isEditable = false
         
       
     }
