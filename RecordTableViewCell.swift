@@ -11,6 +11,7 @@ import UIKit
 class RecordTableViewCell: UITableViewCell {
     @IBOutlet weak var consultantImage: UIImageView!
 
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var RecordName: UILabel!
     @IBOutlet weak var consultantName: UILabel!
    

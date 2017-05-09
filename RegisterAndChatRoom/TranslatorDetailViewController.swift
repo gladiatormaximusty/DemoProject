@@ -42,7 +42,7 @@ class TranslatorDetailViewController: UIViewController {
                 
                 UserDefaults.standard.set(true, forKey: "openFirstController")
                 
-            let properties: [String: Any] = ["text": "系統通知：您與\((self.name)!)的預約以完成。諮詢時間為\((self.theSelectorTime)!)"]
+            let properties: [String: Any] = ["text": "系統通知：您與\((self.name)!)的預約以完成。諮詢時間為\((self.theSelectorTime)!)，我們會再主動聯繫您。"]
                 self.sendMessageWithProperties(properties: properties)
         
 
@@ -54,7 +54,7 @@ class TranslatorDetailViewController: UIViewController {
             
             UserDefaults.standard.set(true, forKey: "openFirstController")
             
-            let properties: [String: Any] = ["text": "系統通知：您與\((self.name)!)的預約以完成。諮詢時間為\((self.theSelectorTime)!)"]
+            let properties: [String: Any] = ["text": "系統通知：您與\((self.name)!)的預約以完成。諮詢時間為\((self.theSelectorTime)!)，我們會再主動聯繫您。"]
             self.sendMessageWithProperties(properties: properties)
             
         }))
@@ -62,28 +62,7 @@ class TranslatorDetailViewController: UIViewController {
         
     }
 
-    @IBAction func checkButton(_ sender: UIButton) {
-//        let alert = UIAlertController(title: "預約成功", message: "是否要將此行程加進行事曆", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { _ in
-//            
-//            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
-//            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
-//            self.navigationController?.pushViewController(mainViewController, animated: true)
-//            
-//            UserDefaults.standard.set(true, forKey: "openFirstController")
-//
-//        }))
-//        alert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { _ in
-//            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
-//            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
-//            self.navigationController?.pushViewController(mainViewController, animated: true)
-//            
-//            UserDefaults.standard.set(true, forKey: "openFirstController")
-//
-//        }))
-//       present(alert, animated: true, completion: nil)
-      
-    }
+    
     
     func sendMessageWithProperties(properties: [String: Any]) {
         let ref = FIRDatabase.database().reference().child("Messages")

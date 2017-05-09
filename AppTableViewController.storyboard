@@ -57,7 +57,7 @@
         <scene sceneID="f9X-aA-vMF">
             <objects>
                 <collectionViewController storyboardIdentifier="ChatLogController" id="gAN-gj-Odb" customClass="ChatLogController" customModule="RegisterAndChatRoom" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="cag-rs-E6g">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="cag-rs-E6g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -171,7 +171,7 @@
             <objects>
                 <navigationController id="Z0z-d0-4ln" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="talk_btn" id="VAz-Pc-MTo"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="zrW-qU-u4E">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zrW-qU-u4E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -187,7 +187,7 @@
         <scene sceneID="VtJ-Qe-Q7n">
             <objects>
                 <viewControllerPlaceholder storyboardName="Record" referencedIdentifier="Record" id="pBe-NE-RlW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="require_btn" id="FWf-24-DeH"/>
+                    <tabBarItem key="tabBarItem" title="" image="record_btn" id="FWf-24-DeH"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cpb-Ph-3fE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -207,7 +207,7 @@
         <scene sceneID="eEn-ie-uGO">
             <objects>
                 <viewControllerPlaceholder storyboardName="TaiwanActivityMap" referencedIdentifier="TaiwanActivityMap" id="OOa-1g-tVf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="activity_btn-1" id="sAX-aS-2Oa"/>
+                    <tabBarItem key="tabBarItem" title="" image="activity_btn" id="sAX-aS-2Oa"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTl-bU-vNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -221,7 +221,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="R0S-ZL-MGr">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.5490196078431373" green="0.1764705882352941" blue="0.22745098039215686" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.38855436040041691" green="0.88310378544882773" blue="0.88826891613490688" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
@@ -245,7 +245,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="11W-XJ-76f" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="UHh-xd-EhB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UHh-xd-EhB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.20000000000000001" green="0.20784313725490197" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -264,7 +264,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6WI-kL-wco" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="e3y-dF-XW2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e3y-dF-XW2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.20000000000000001" green="0.20784313725490197" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -286,7 +286,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Uog-PR-kOn" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Lsl-HG-uxZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lsl-HG-uxZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -301,8 +301,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="activity_btn-1" width="32" height="32"/>
+        <image name="activity_btn" width="32" height="32"/>
+        <image name="record_btn" width="30" height="32"/>
         <image name="require_btn" width="32" height="32"/>
-        <image name="talk_btn" width="32" height="32"/>
+        <image name="talk_btn" width="32" height="31"/>
     </resources>
 </document>

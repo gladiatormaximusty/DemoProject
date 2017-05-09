@@ -10,10 +10,10 @@
 		2AB2EBD542E2B8B20CD0C1B8 /* Pods_RegisterAndChatRoom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7871FEF567A991EFA538C88 /* Pods_RegisterAndChatRoom.framework */; };
 		393EA00D1EBC13B20079C53D /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 393EA00C1EBC13B20079C53D /* Record.storyboard */; };
 		393EA0111EBC24350079C53D /* RecordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393EA0101EBC24350079C53D /* RecordTableViewController.swift */; };
-		393EA0131EBC244C0079C53D /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393EA0121EBC244C0079C53D /* RecordTableViewCell.swift */; };
 		393EA0151EBC247B0079C53D /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393EA0141EBC247B0079C53D /* ShowDetailViewController.swift */; };
 		393EA0171EBC262F0079C53D /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393EA0161EBC262F0079C53D /* RecordModel.swift */; };
 		393EA01D1EBF847C0079C53D /* PartnersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393EA01C1EBF847C0079C53D /* PartnersTableViewController.swift */; };
+		3942086B1EC177FE003A5B3E /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3942086A1EC177FE003A5B3E /* RecordCollectionViewCell.swift */; };
 		39D3D3511EB9D75600827CFB /* DemandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3D3491EB9D75600827CFB /* DemandViewController.swift */; };
 		39D3D3521EB9D75600827CFB /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3D34A1EB9D75600827CFB /* model.swift */; };
 		39D3D3531EB9D75600827CFB /* requirement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39D3D34B1EB9D75600827CFB /* requirement.storyboard */; };
@@ -27,6 +27,7 @@
 		39D3D3661EB9D94400827CFB /* ShowFrameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3D35E1EB9D94400827CFB /* ShowFrameCollectionViewCell.swift */; };
 		39D3D3671EB9D94400827CFB /* ShowFrameCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3D35F1EB9D94400827CFB /* ShowFrameCollectionViewController.swift */; };
 		39D3D3681EB9D94400827CFB /* TaiwanActivityMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39D3D3601EB9D94400827CFB /* TaiwanActivityMap.storyboard */; };
+		39E0DB2B1EC196EB00AD1D63 /* NewShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E0DB2A1EC196EB00AD1D63 /* NewShowDetailViewController.swift */; };
 		3D75B1EF1EAD22E70058BE40 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75B1EE1EAD22E70058BE40 /* ChatMessageCell.swift */; };
 		3D75B2671EAE27310058BE40 /* RegisterController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75B2661EAE27310058BE40 /* RegisterController+handlers.swift */; };
 		3D75B26A1EAE2BD00058BE40 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75B2691EAE2BD00058BE40 /* Extensions.swift */; };
@@ -53,10 +54,10 @@
 		393EA00A1EBB6E960079C53D /* testPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = testPlayground.playground; sourceTree = "<group>"; };
 		393EA00C1EBC13B20079C53D /* Record.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Record.storyboard; sourceTree = "<group>"; };
 		393EA0101EBC24350079C53D /* RecordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewController.swift; sourceTree = "<group>"; };
-		393EA0121EBC244C0079C53D /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		393EA0141EBC247B0079C53D /* ShowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
 		393EA0161EBC262F0079C53D /* RecordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
 		393EA01C1EBF847C0079C53D /* PartnersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnersTableViewController.swift; sourceTree = "<group>"; };
+		3942086A1EC177FE003A5B3E /* RecordCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCollectionViewCell.swift; sourceTree = "<group>"; };
 		39D3D3491EB9D75600827CFB /* DemandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandViewController.swift; sourceTree = "<group>"; };
 		39D3D34A1EB9D75600827CFB /* model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		39D3D34B1EB9D75600827CFB /* requirement.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = requirement.storyboard; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		39D3D35E1EB9D94400827CFB /* ShowFrameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowFrameCollectionViewCell.swift; sourceTree = "<group>"; };
 		39D3D35F1EB9D94400827CFB /* ShowFrameCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowFrameCollectionViewController.swift; sourceTree = "<group>"; };
 		39D3D3601EB9D94400827CFB /* TaiwanActivityMap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TaiwanActivityMap.storyboard; sourceTree = "<group>"; };
+		39E0DB2A1EC196EB00AD1D63 /* NewShowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewShowDetailViewController.swift; sourceTree = "<group>"; };
 		3D75B1EE1EAD22E70058BE40 /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		3D75B2661EAE27310058BE40 /* RegisterController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RegisterController+handlers.swift"; sourceTree = "<group>"; };
 		3D75B2691EAE2BD00058BE40 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -115,9 +117,10 @@
 				393EA00C1EBC13B20079C53D /* Record.storyboard */,
 				393EA0161EBC262F0079C53D /* RecordModel.swift */,
 				393EA0101EBC24350079C53D /* RecordTableViewController.swift */,
-				393EA0121EBC244C0079C53D /* RecordTableViewCell.swift */,
+				3942086A1EC177FE003A5B3E /* RecordCollectionViewCell.swift */,
 				393EA0141EBC247B0079C53D /* ShowDetailViewController.swift */,
 				393EA01C1EBF847C0079C53D /* PartnersTableViewController.swift */,
+				39E0DB2A1EC196EB00AD1D63 /* NewShowDetailViewController.swift */,
 			);
 			name = Record;
 			path = ..;
@@ -380,15 +383,16 @@
 			files = (
 				39D3D3521EB9D75600827CFB /* model.swift in Sources */,
 				39D3D3641EB9D94400827CFB /* MapModel.swift in Sources */,
-				393EA0131EBC244C0079C53D /* RecordTableViewCell.swift in Sources */,
 				3DEAB25C1EACB38F00209233 /* MainViewController.swift in Sources */,
 				3DEAB2571EAC677800209233 /* RegisterController.swift in Sources */,
 				3D75B27A1EAE82540058BE40 /* ChatLogController.swift in Sources */,
 				39D3D3671EB9D94400827CFB /* ShowFrameCollectionViewController.swift in Sources */,
 				3DAE88031EABA7DC003F8DF4 /* LoginController.swift in Sources */,
+				3942086B1EC177FE003A5B3E /* RecordCollectionViewCell.swift in Sources */,
 				393EA0171EBC262F0079C53D /* RecordModel.swift in Sources */,
 				393EA01D1EBF847C0079C53D /* PartnersTableViewController.swift in Sources */,
 				393EA0151EBC247B0079C53D /* ShowDetailViewController.swift in Sources */,
+				39E0DB2B1EC196EB00AD1D63 /* NewShowDetailViewController.swift in Sources */,
 				393EA0111EBC24350079C53D /* RecordTableViewController.swift in Sources */,
 				3D75B2671EAE27310058BE40 /* RegisterController+handlers.swift in Sources */,
 				39D3D3661EB9D94400827CFB /* ShowFrameCollectionViewCell.swift in Sources */,
@@ -527,7 +531,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = RegisterAndChatRoom/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Edward.RegisterAndChatRoom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -543,7 +547,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = RegisterAndChatRoom/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Edward.RegisterAndChatRoom;
 				PRODUCT_NAME = "$(TARGET_NAME)";

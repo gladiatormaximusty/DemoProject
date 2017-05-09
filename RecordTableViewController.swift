@@ -8,18 +8,33 @@
 
 import UIKit
 
-class RecordTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+class RecordTableViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource
 {
     
-    @IBOutlet weak var changeValue: UISegmentedControl!
-    
-    @IBAction func tabkeViewReload(_ sender: UISegmentedControl) {
+    @IBOutlet weak var leftButtonBackground: UIButton!
+    @IBAction func leftButton(_ sender: UIButton) {
+        sender.setImage(UIImage(named: "bsi_btn"), for: .normal)
+        rightButtonBackground.setImage(UIImage(named: "push_mf_btn"), for: .normal)
+        selectNmuber = 1
         
         showBusinessDetail.reloadData()
     }
-    @IBOutlet weak var showBusinessDetail: UITableView!
+    
+    @IBOutlet weak var rightButtonBackground: UIButton!
+    @IBAction func rightButton(_ sender: UIButton) {
+        sender.setImage(UIImage(named: "mf_btn"), for: .normal)
+        leftButtonBackground.setImage(UIImage(named: "push_bsi_btn"), for: .normal)
+        
+        selectNmuber = 2
+        showBusinessDetail.reloadData()
+    }
+    
+    var selectNmuber = 1
+    
+    
+    @IBOutlet weak var showBusinessDetail: UICollectionView!
     let demoRecord:[RecordMoedel]=[
-        RecordMoedel(name: "Mr. Melon", image: "wizard4", pdfName: "東盟茶葉標準")
+        RecordMoedel(name: "Mr. Melon", image: "asean", pdfName: "東盟茶葉標準")
     ]
     
     let partners:[PartnersModel] = [
@@ -29,72 +44,83 @@ class RecordTableViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         showBusinessDetail.delegate = self
         showBusinessDetail.dataSource = self
-        changeValue.tintColor = UIColor(red: 19/255.0, green: 23/255.0, blue: 53/255.0, alpha: 1.0)
-        
-
-
-        
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     
     }
     
-     func numberOfSections(in tableView: UITableView) -> Int {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let layout = showBusinessDetail.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: view.frame.width - 24, height: (view.frame.width - 24) * 0.3)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 12, bottom: 0, right: 12)
+        layout.minimumLineSpacing = 14
+        layout.minimumInteritemSpacing = 14
+        
+        
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if changeValue.selectedSegmentIndex == 0 {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if selectNmuber == 1 {
             return demoRecord.count
         } else {
             return partners.count
         }
-        
     }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RecordTableViewCell
-            if changeValue.selectedSegmentIndex == 0 {
-                cell.consultantImage.layer.cornerRadius = cell.consultantImage.frame.width / 2
-                cell.consultantImage.clipsToBounds = true
-                cell.consultantImage.image = UIImage(named: demoRecord[indexPath.row].image!)
-                cell.consultantName.isHidden = true
-                cell.RecordName.text = demoRecord[indexPath.row].pdfName
-            } else {
-                cell.consultantImage.layer.cornerRadius = cell.consultantImage.frame.width / 2
-                cell.consultantImage.clipsToBounds = true
-                cell.consultantName.isHidden = false
-                cell.RecordName.text = partners[indexPath.row].name
-                cell.consultantName.text = partners[indexPath.row].phone
-                cell.consultantImage.image = UIImage(named: partners[indexPath.row].logoImage!)
-            }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! RecordCollectionViewCell
+        if selectNmuber == 1 {
+            cell.backView.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
+            cell.backView.layer.shadowOpacity = 5
+            cell.backView.layer.shadowColor = UIColor.gray.cgColor
+            cell.backView.layer.shadowRadius = 10.0
+            cell.photoImage.image = UIImage(named: demoRecord[indexPath.row].image!)
+            cell.detailLabel.isHidden = true
+            cell.nameLabel.text = demoRecord[indexPath.row].pdfName
+        } else {
+            cell.backView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+            cell.backView.layer.shadowOpacity = 5
+            cell.backView.layer.shadowColor = UIColor.gray.cgColor
+            cell.backView.layer.shadowRadius = 10.0
+            cell.detailLabel.isHidden = false
+            cell.nameLabel.text = partners[indexPath.row].name
+            cell.detailLabel.text = partners[indexPath.row].phone
+            cell.photoImage.image = UIImage(named: partners[indexPath.row].logoImage!)
+        }
         return cell
     }
+ 
     
-    
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if changeValue.selectedSegmentIndex == 0 {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if selectNmuber == 1 {
             let showDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShowDetailViewController") as! ShowDetailViewController
             
             navigationController?.pushViewController(showDetailViewController, animated: true)
         } else {
-            let partnersTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "PartnersTableViewController") as! PartnersTableViewController
-            partnersTableViewController.imageName = partners[indexPath.row].logoImage
-            partnersTableViewController.selectName = partners[indexPath.row].name
-            partnersTableViewController.selectPhone = partners[indexPath.row].phone
-            partnersTableViewController.selectMail = partners[indexPath.row].email
-            partnersTableViewController.selectUrl = partners[indexPath.row].url
-            partnersTableViewController.selectDetail = partners[indexPath.row].detail
-
-            navigationController?.pushViewController(partnersTableViewController, animated: true)
+            let newShowDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "NewShowDetailViewController") as! NewShowDetailViewController
+            newShowDetailViewController.imageName = partners[indexPath.row].logoImage
+            newShowDetailViewController.selectName = partners[indexPath.row].name
+            newShowDetailViewController.selectPhone = partners[indexPath.row].phone
+            newShowDetailViewController.selectMail = partners[indexPath.row].email
+            newShowDetailViewController.selectUrl = partners[indexPath.row].url
+            newShowDetailViewController.selectDetail = partners[indexPath.row].detail
+            
+            navigationController?.pushViewController(newShowDetailViewController, animated: true)
         }
-       
-    }
 
+    }
+    
+    
     
     
 }

@@ -10,17 +10,18 @@ import UIKit
 
 class MainViewController: UITabBarController {
 
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-                
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillLayoutSubviews() {
+        
+        var test:CGRect = self.tabBar.frame
+        test.size.height = 50
+        test.origin.y = self.view.frame.size.height - 50
+        self.tabBar.frame = test
+        
+        
+        
     }
-    
 }
