@@ -40,7 +40,7 @@ class MessagesController: UITableViewController{
         
         tableView.allowsMultipleSelectionDuringEditing = true
         
-        
+        self.tableView.separatorColor = UIColor.clear
       
     }
     
@@ -153,7 +153,7 @@ class MessagesController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 72
+        return 90
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

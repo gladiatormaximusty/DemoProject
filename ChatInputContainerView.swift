@@ -84,7 +84,7 @@ class ChatInputContainerView: UIView, UITextFieldDelegate{
         
         sendButton.setTitle("傳送", for: .normal)
         sendButton.setTitleColor(UIColor.white, for: .normal)
-        sendButton.backgroundColor = UIColor(r: 45, g: 43, b: 82)
+        sendButton.backgroundColor = UIColor(r: 6, g: 159, b: 192)
         sendButton.titleLabel?.textColor = UIColor.white
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         

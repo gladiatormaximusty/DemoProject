@@ -275,6 +275,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="348" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Hlg-cm-YQY" secondAttribute="height" multiplier="29:10" id="hU7-eh-zbs"/>
+                                            <constraint firstAttribute="height" constant="120" id="uoV-h6-1hx"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWY-xd-tiA">
@@ -601,7 +602,7 @@
                     <tabBarItem key="tabBarItem" title="" image="record_btn" id="tjs-bI-0WX"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JT6-Xh-j4r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JT6-Xh-j4r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">

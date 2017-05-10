@@ -32,8 +32,8 @@ class TranslatorDetailViewController: UIViewController {
     
     
     @IBAction func reservationButton(_ sender: UIButton) {
-        let alert = UIAlertController(title: "是否要將此行程加進行事曆", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { _ in
+        let alert = UIAlertController(title: "已送出預約需求", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
             
             
                 let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
@@ -47,17 +47,17 @@ class TranslatorDetailViewController: UIViewController {
         
 
         }))
-        alert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { _ in
-            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
-            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
-            self.navigationController?.pushViewController(mainViewController, animated: true)
-            
-            UserDefaults.standard.set(true, forKey: "openFirstController")
-            
-            let properties: [String: Any] = ["text": "系統通知：您與\((self.name)!)的預約以完成。諮詢時間為\((self.theSelectorTime)!)，我們會再主動聯繫您。"]
-            self.sendMessageWithProperties(properties: properties)
-            
-        }))
+//        alert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { _ in
+//            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
+//            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+//            self.navigationController?.pushViewController(mainViewController, animated: true)
+//            
+//            UserDefaults.standard.set(true, forKey: "openFirstController")
+//            
+//            let properties: [String: Any] = ["text": "系統通知：您與\((self.name)!)的預約以完成。諮詢時間為\((self.theSelectorTime)!)，我們會再主動聯繫您。"]
+//            self.sendMessageWithProperties(properties: properties)
+//            
+//        }))
         present(alert, animated: true, completion: nil)
         
     }

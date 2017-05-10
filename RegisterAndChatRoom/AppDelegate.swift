@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationBarDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FIRApp.configure()
-        GMSServices.provideAPIKey("AIzaSyCLF9gY7813Hc6WhTdIkV4ompugpSLT1ZM")
-        GMSPlacesClient.provideAPIKey("AIzaSyCLF9gY7813Hc6WhTdIkV4ompugpSLT1ZM")
+        GMSServices.provideAPIKey("AIzaSyAIYe_N9_SdhkfD4Wa_UA7G4vyk9mtb34M")
+        GMSPlacesClient.provideAPIKey("AIzaSyAIYe_N9_SdhkfD4Wa_UA7G4vyk9mtb34M")
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "bg"), for: .default)
         
         
