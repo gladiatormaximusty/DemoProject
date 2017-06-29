@@ -25,15 +25,28 @@ class LoginController: UIViewController, UITextFieldDelegate {
         guard let email = emailTextField.text, let password = passwordTextField.text else{
             return
         }
-        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
             if error != nil {
-                print("跳出警告控制器提醒使用者ex:帳號密碼不符！！請重新輸入！！")
+                let alert = UIAlertController(title: "", message: "信箱密碼輸入不正確", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 return
             }
             self.messagesController?.fetchUserAndSetupNavBarTitle()
-            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
-            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
-            self.present(mainViewController!, animated: true, completion: nil)
+//            let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
+//            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
+//            self.present(mainViewController!, animated: true, completion: nil)
+            if UserDefaults.standard.bool(forKey: "openFirstController") != true {
+                let storyboard = UIStoryboard(name: "requirement", bundle: nil)
+                let requirement = storyboard.instantiateViewController(withIdentifier: "requirement")
+                self.present(requirement, animated: true, completion: nil)
+            } else {
+                let storyboard = UIStoryboard(name: "AppTableViewController", bundle: nil)
+                let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
+                self.present(mainViewController!, animated: true, completion: nil)
+
+            }
+            
             print("login successfully")
         })
     }
@@ -62,7 +75,16 @@ class LoginController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
+        //外加的，但沒效用！！！
+          self.setNeedsStatusBarAppearanceUpdate()
     }
+    //外加的，但沒效用！！
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
+
 }
 extension UIColor{
     convenience init(r: CGFloat, g: CGFloat, b: CGFloat){

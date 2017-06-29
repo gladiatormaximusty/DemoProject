@@ -12,25 +12,25 @@ import MobileCoreServices
 import AVFoundation
 
 class ChatLogController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
     var user: User? {
         didSet {
             navigationItem.title = user?.name
-            
-            observeMessages()
+             observeMessages()
         }
     }
+    
+
     
     var messages = [Message]()
     
     func observeMessages() {
-        guard let uid = FIRAuth.auth()?.currentUser?.uid, let toId = user?.id else {
+        guard let uid = Auth.auth().currentUser?.uid, let toId = user?.id else {
             return
         }
-        let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(uid).child(toId)
+        let userMessagesRef = Database.database().reference().child("user-messages").child(uid).child(toId)
         userMessagesRef.observe(.childAdded, with: { (snapshot) in
             let messageId = snapshot.key
-            let messagesRef = FIRDatabase.database().reference().child("Messages").child(messageId)
+            let messagesRef = Database.database().reference().child("Messages").child(messageId)
             messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 guard let dictionary = snapshot.value as? [String: Any] else {
                     return
@@ -56,14 +56,17 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         collectionView?.alwaysBounceVertical = true
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = UIColor(r: 241, g: 241, b: 241)
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.keyboardDismissMode = .interactive
-        
         setupKeyboardObservers()
+        
+        let textAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+               
     }
     
     lazy var inputContainerView: ChatInputContainerView = {
@@ -78,9 +81,32 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         imagePickerController.allowsEditing = true
         imagePickerController.delegate = self
         imagePickerController.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+//        //加上新的camera!!!
+//        imagePickerController.sourceType = UIImagePickerControllerSourceType.camera;
         
         present(imagePickerController, animated: true, completion: nil)
     }
+    
+    func handleCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            var imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+
+    }
+    
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        //imagePicked.image = image
+        picker.dismiss(animated: true, completion: nil);
+    }
+
+    
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -96,7 +122,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     
     private func handleVideoSelectedForUrl(url: URL) {
         let filename = NSUUID().uuidString + ".mov"
-        let uploadTask = FIRStorage.storage().reference().child("message_movies").child(filename).putFile(url, metadata: nil, completion: { (metadata, error) in
+        let uploadTask = Storage.storage().reference().child("message_movies").child(filename).putFile(from: url, metadata: nil, completion: { (metadata, error) in
             
             if error != nil {
                 print("Failed upload of video:", error!)
@@ -157,10 +183,10 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     
     private func uploadToFirebaseStorageUsingImage(image: UIImage, completion: @escaping (_ imageUrl: String) -> ()) {
         let imageName = NSUUID().uuidString
-        let ref = FIRStorage.storage().reference().child("message_images").child(imageName)
+        let ref = Storage.storage().reference().child("message_images").child(imageName)
         
         if let uploadData = UIImageJPEGRepresentation(image, 0.2) {
-            ref.put(uploadData, metadata: nil, completion: { (metadata, error) in
+            ref.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 if error != nil {
                     print("Failed to upload image:", error!)
                     return
@@ -257,9 +283,9 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             cell.profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageUrl)
         }
         
-        if message.fromId == FIRAuth.auth()?.currentUser?.uid {
+        if message.fromId == Auth.auth().currentUser?.uid {
             // Outgoing blue
-            cell.bubbleView.backgroundColor = ChatMessageCell.blueColor
+            cell.bubbleView.backgroundColor = UIColor(r: 6, g:159, b:192)
             cell.textView.textColor = .white
             cell.profileImageView.isHidden = true
             
@@ -267,7 +293,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             cell.bubbleViewLeftAnchor?.isActive = false
         } else {
             // Incoming gray
-            cell.bubbleView.backgroundColor = UIColor(r: 240, g: 240, b: 240)
+            cell.bubbleView.backgroundColor = UIColor(r: 255, g: 255, b: 255)
             cell.textView.textColor = .black
             cell.profileImageView.isHidden = false
             
@@ -283,7 +309,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             cell.messageImageView.isHidden = true
         }
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView?.collectionViewLayout.invalidateLayout()
     }
@@ -323,10 +349,10 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     }
     
     private func sendMessageWithProperties(properties: [String: Any]) {
-        let ref = FIRDatabase.database().reference().child("Messages")
+        let ref = Database.database().reference().child("Messages")
         let childRef = ref.childByAutoId()
         let toId = user!.id!
-        let fromId = FIRAuth.auth()!.currentUser!.uid
+        let fromId = Auth.auth().currentUser!.uid
         let timestamp = NSNumber(value: Int(Date().timeIntervalSince1970))
         var values: [String: Any] = ["toId": toId as Any, "fromId": fromId as Any, "timestamp": timestamp]
         
@@ -340,12 +366,12 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             }
             self.inputContainerView.inputTextField.text = nil
             
-            let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId).child(toId)
+            let userMessagesRef = Database.database().reference().child("user-messages").child(fromId).child(toId)
             
             let messageId = childRef.key
             userMessagesRef.updateChildValues([messageId: 1])
             
-            let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId).child(fromId)
+            let recipientUserMessagesRef = Database.database().reference().child("user-messages").child(toId).child(fromId)
             recipientUserMessagesRef.updateChildValues([messageId: 1])
         }
     }

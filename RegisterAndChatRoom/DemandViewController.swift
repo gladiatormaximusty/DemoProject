@@ -7,34 +7,39 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class DemandViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var datTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
-    @IBOutlet weak var genderTextField: UITextField!
     
-    @IBAction func dateDetailSet(_ sender: UITextField) {
+    @IBOutlet weak var industryTextField: UITextField!
+    
+    @IBAction func dateAction(_ sender: UITextField) {
         datePickerView(sender: sender)
     }
-    @IBAction func datset(_ sender: UITextField) {
-        toolBar(sender: sender)
+    
+    @IBAction func locationAction(_ sender: UITextField) {
+        setToolBar(sender: sender)
     }
-    @IBAction func locationset(_ sender: UITextField) {
-         toolBar(sender: sender)
+    
+    @IBAction func industryAction(_ sender: UITextField) {
+        setToolBar(sender: sender)
     }
-    @IBAction func genderset(_ sender: UITextField) {
-        toolBar(sender: sender)
-    }
- 
-    @IBOutlet weak var enterButton: UIButton!
+    
+    
+    
     
     @IBAction func enterIndexButton(_ sender: UIButton) {
-        if dateTextField.text != nil || datTextField.text != nil || locationTextField.text != nil || genderTextField.text != nil {
+        if dateTextField.text != "" && locationTextField.text != "" && industryTextField.text != "" {
             let storyboard = UIStoryboard(name: "requirement", bundle: nil)
-            let TranslatorViewController = storyboard.instantiateViewController(withIdentifier: "TranslatorViewController")
-            navigationController?.pushViewController(TranslatorViewController, animated: true)
+            let translatorCollectionViewController = storyboard.instantiateViewController(withIdentifier: "TranslatorCollectionViewController") as! TranslatorCollectionViewController
+            
+            translatorCollectionViewController.didSelectDate = dateTextField.text
+            
+            navigationController?.pushViewController(translatorCollectionViewController, animated: true)
             
         } else {
             let alert = UIAlertController(title: "錯誤", message: "輸入框請勿空白", preferredStyle: .alert)
@@ -44,84 +49,99 @@ class DemandViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
     }
     
-    let day = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"]
-    let location = ["泰國", "馬來西亞"]
-    let gender = ["不拘","男","女"]
-    
+    let location = ["泰國", "馬來西亞", "印尼"]
+    let industry = ["鋼鐵製造業", "紡織業", "化學材料製造業", "製茶業", "營建工程業"]
     let datePicker = UIDatePicker()
-    let dayPicker = UIPickerView()
     let locationPicker = UIPickerView()
-    let genderPicker = UIPickerView()
+    let industryPicker = UIPickerView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dayPicker.delegate = self
-        dayPicker.dataSource = self
         
         locationPicker.delegate = self
         locationPicker.dataSource = self
         
-        genderPicker.delegate = self
-        genderPicker.dataSource = self
+        industryPicker.delegate = self
+        industryPicker.dataSource = self
+        
+        
+        let datePlacegolder = NSAttributedString(string: "請選擇您想預約的時間", attributes: [NSForegroundColorAttributeName : UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5)])
+        
+        dateTextField.attributedPlaceholder = datePlacegolder
+        
+        let locationPlacegolder = NSAttributedString(string: "請選擇想詢問的國家", attributes: [NSForegroundColorAttributeName : UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5)])
+        
+        locationTextField.attributedPlaceholder = locationPlacegolder
+        
+        let industryPlacegolder = NSAttributedString(string: "請選擇產業別", attributes: [NSForegroundColorAttributeName : UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5)])
+        
+        industryTextField.attributedPlaceholder = industryPlacegolder
+        
 
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        dateTextField.becomeFirstResponder()
+        super.viewDidAppear(animated)
+        
+//        dateTextField.becomeFirstResponder()
     }
     
     func datePickerView(sender: UITextField) {
-        datePicker.datePickerMode = .date
+        datePicker.datePickerMode = .dateAndTime
         datePicker.locale = NSLocale(localeIdentifier: "Chinese") as Locale
+        //        設定時間間距
+        datePicker.minuteInterval = 10
+        let date = Date()
+        datePicker.minimumDate = date
         
-        toolBar(sender: sender)
         
+        setToolBar(sender: sender)
     }
     
-    func toolBar(sender: UITextField) {
+    func setToolBar(sender:UITextField) {
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
+        toolBar.barTintColor = UIColor(red: 177.0/255, green: 177.0/255, blue: 189.0/255.0, alpha: 1)
+
         toolBar.isTranslucent = true
         toolBar.sizeToFit()
         
         switch sender.tag {
         case 1:
-            let checkButton = UIBarButtonItem(title: "check", style: .plain, target: self, action: #selector(dateCkeckItem))
+            let checkButton = UIBarButtonItem(title: "check", style: .plain, target: self, action: #selector(dateCheckItem))
             let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-            let cancelItem = UIBarButtonItem(title: "cancel", style: .plain, target: self, action: #selector(dateCancelItem))
-            toolBar.setItems([cancelItem, spaceButton, checkButton], animated: true)
+            let cancelButton = UIBarButtonItem(title: "cancel", style: .plain, target: self, action: #selector(dateCancelItem))
+            
+            toolBar.setItems([cancelButton, spaceButton, checkButton], animated: true)
             toolBar.isUserInteractionEnabled = true
             
-            sender.inputView = datePicker
-            sender.inputAccessoryView = toolBar
+            dateTextField.inputView = datePicker
+            dateTextField.inputAccessoryView = toolBar
+            dateTextField.inputView?.backgroundColor = UIColor(red: 177.0/255, green: 177.0/255, blue: 189.0/255.0, alpha: 1)
         case 2:
-            let checkButton = UIBarButtonItem(title: "check", style: .plain, target: self, action: #selector(dayCheckItem))
-            let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-            let cancelItem = UIBarButtonItem(title: "cancel", style: .plain, target: self, action: #selector(dayCancelItem))
-            toolBar.setItems([cancelItem, spaceButton, checkButton], animated: true)
-            toolBar.isUserInteractionEnabled = true
-            
-            sender.inputView = dayPicker
-            sender.inputAccessoryView = toolBar
-        case 3:
             let checkButton = UIBarButtonItem(title: "check", style: .plain, target: self, action: #selector(locationCheckItem))
             let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-            let cancelItem = UIBarButtonItem(title: "cancel", style: .plain, target: self, action: #selector(locationCancelItem))
-            toolBar.setItems([cancelItem, spaceButton, checkButton], animated: true)
-            toolBar.isUserInteractionEnabled = true
+            let cancelButton = UIBarButtonItem(title: "cancel", style: .plain, target: self, action: #selector(locationCancelItem))
+            toolBar.setItems([cancelButton, spaceButton, checkButton], animated: true)
             
-            sender.inputView = locationPicker
-            sender.inputAccessoryView = toolBar
-        case 4:
-            let checkButton = UIBarButtonItem(title: "check", style: .plain, target: self, action: #selector(genderCheckItem))
+            
+            locationTextField.inputView = locationPicker
+            locationTextField.inputAccessoryView = toolBar
+            locationTextField.inputView?.backgroundColor = UIColor(red: 177.0/255, green: 177.0/255, blue: 189.0/255.0, alpha: 1)
+        case 3:
+            let checkButton = UIBarButtonItem(title: "check", style: .plain, target: self, action: #selector(industryCheckItem))
             let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-            let cancelItem = UIBarButtonItem(title: "cancel", style: .plain, target: self, action: #selector(genderCancelItem))
-            toolBar.setItems([cancelItem, spaceButton, checkButton], animated: true)
-            toolBar.isUserInteractionEnabled = true
+            let cancelButton = UIBarButtonItem(title: "cancel", style: .plain, target: self, action: #selector(industryCancelItem))
+            toolBar.setItems([cancelButton, spaceButton, checkButton], animated: true)
             
-            sender.inputView = genderPicker
-            sender.inputAccessoryView = toolBar
+            
+            industryTextField.inputView = industryPicker
+            industryTextField.inputAccessoryView = toolBar
+            industryTextField.inputView?.backgroundColor = UIColor(red: 177.0/255, green: 177.0/255, blue: 189.0/255.0, alpha: 1)
         default:
             break
         }
@@ -132,23 +152,22 @@ class DemandViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == dayPicker {
-            return day.count
-        } else if pickerView == locationPicker {
+        
+        if pickerView == locationPicker {
             return location.count
         } else {
-            return gender.count
+             return industry.count
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == dayPicker {
-            return day[row]
-        } else if pickerView == locationPicker {
+        
+        if pickerView == locationPicker {
             return location[row]
         } else {
-            return gender[row]
+            return industry[row]
         }
+        
     }
 
 }

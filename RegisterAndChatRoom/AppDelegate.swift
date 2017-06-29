@@ -13,16 +13,17 @@ import GoogleMaps
 import GooglePlaces
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationBarDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        FIRApp.configure()
-        let key = "AIzaSyCLF9gY7813Hc6WhTdIkV4ompugpSLT1ZM"
-        GMSServices.provideAPIKey(key)
-        GMSPlacesClient.provideAPIKey(key)
+        FirebaseApp.configure()
+        GMSServices.provideAPIKey("AIzaSyAIYe_N9_SdhkfD4Wa_UA7G4vyk9mtb34M")
+        GMSPlacesClient.provideAPIKey("AIzaSyAIYe_N9_SdhkfD4Wa_UA7G4vyk9mtb34M")
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "bg"), for: .default)
+        
         
         return true
     }

@@ -29,7 +29,7 @@ class UserCell: UITableViewCell {
     private func setupNameAndProfileImage() {
         
         if let id = message?.chatPartnerId() {
-            let ref = FIRDatabase.database().reference().child("users").child(id)
+            let ref = Database.database().reference().child("users").child(id)
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any] {
                     self.textLabel?.text = dictionary["name"] as? String
@@ -45,7 +45,9 @@ class UserCell: UITableViewCell {
         super.layoutSubviews()
         
         textLabel?.frame = CGRect(x: 64, y: textLabel!.frame.origin.y - 2, width: textLabel!.frame.width, height: textLabel!.frame.height)
+        textLabel?.textColor = UIColor.black
         detailTextLabel?.frame = CGRect(x: 64, y: detailTextLabel!.frame.origin.y + 2, width: detailTextLabel!.frame.width, height: detailTextLabel!.frame.height)
+        detailTextLabel?.textColor = UIColor.gray
     }
     
     let profileImageView: UIImageView = {
@@ -60,7 +62,7 @@ class UserCell: UITableViewCell {
     let timeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13)
-        label.textColor = .darkGray
+        label.textColor = UIColor(r: 128, g: 127, b: 150)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
