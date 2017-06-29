@@ -25,7 +25,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
         guard let email = emailTextField.text, let password = passwordTextField.text else{
             return
         }
-        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
             if error != nil {
                 let alert = UIAlertController(title: "", message: "信箱密碼輸入不正確", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

@@ -65,7 +65,7 @@ class TranslatorDetailViewController: UIViewController {
     
     
     func sendMessageWithProperties(properties: [String: Any]) {
-        let ref = FIRDatabase.database().reference().child("Messages")
+        let ref = Database.database().reference().child("Messages")
         let childRef = ref.childByAutoId()
         let toId = "kpZ2AxnddKYRfogzg8rKngv15Fi2"
         let fromId = "3saSLTVY23Wq1aPjqZhKUm7zf573"
@@ -82,12 +82,12 @@ class TranslatorDetailViewController: UIViewController {
             }
             
             
-            let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId).child(toId)
+            let userMessagesRef = Database.database().reference().child("user-messages").child(fromId).child(toId)
             
             let messageId = childRef.key
             userMessagesRef.updateChildValues([messageId: 1])
             
-            let recipientUserMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId).child(fromId)
+            let recipientUserMessagesRef = Database.database().reference().child("user-messages").child(toId).child(fromId)
             recipientUserMessagesRef.updateChildValues([messageId: 1])
         }
     }

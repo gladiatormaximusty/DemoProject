@@ -29,7 +29,7 @@ class UserCell: UITableViewCell {
     private func setupNameAndProfileImage() {
         
         if let id = message?.chatPartnerId() {
-            let ref = FIRDatabase.database().reference().child("users").child(id)
+            let ref = Database.database().reference().child("users").child(id)
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any] {
                     self.textLabel?.text = dictionary["name"] as? String

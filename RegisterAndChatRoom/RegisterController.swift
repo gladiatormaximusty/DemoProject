@@ -24,7 +24,7 @@ class RegisterController: UIViewController {
             print("Form is not available")
             return
         }
-        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
             if error != nil {
                 let alert = UIAlertController(title: "登入失敗", message: "信箱密碼輸入不正確", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -35,10 +35,10 @@ class RegisterController: UIViewController {
                 return
             }
             let imageName = NSUUID().uuidString
-            let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpg")
+            let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).jpg")
             //壓縮圖片
             if let profileImage = self.profileImageView.image, let uploadData = UIImageJPEGRepresentation(profileImage, 0.1){
-                storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                     if error != nil {
                         print(error)
                         return
@@ -55,7 +55,7 @@ class RegisterController: UIViewController {
                     })
     }
     private func registerUserIntoDatabaseWithUID(uid:String, values:[String:Any]){
-        let ref = FIRDatabase.database().reference()
+        let ref = Database.database().reference()
         //生出一個reference的child
         
         let usersReference = ref.child("users").child(uid)

@@ -12,11 +12,11 @@ class MainViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     override func viewWillLayoutSubviews() {
-        
-        var test:CGRect = self.tabBar.frame
+        var test:CGRect = self.tabBar.frame 
         test.size.height = 50
         test.origin.y = self.view.frame.size.height - 50
         self.tabBar.frame = test
